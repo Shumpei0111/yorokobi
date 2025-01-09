@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Negotiator from "negotiator";
 import { defaultLanguage, availableLanguages } from "@/app/i18n/settings";
+import { env } from "@/env.mjs";
 
 const getNegotiatedLanguage = (
   headers: Negotiator.Headers
@@ -16,9 +17,19 @@ export const config = {
 export function middleware(request: NextRequest) {
   const headers = {
     "accept-language": request.headers.get("accept-language") ?? "",
+    "basic-auth": request.headers.get("authorization") ?? "",
   };
+
+  if (headers["basic-auth"]) {
+    const basicAuth = headers["basic-auth"];
+    const authValue = basicAuth.split(" ")[1];
+    const [user, password] = atob(authValue).split(":");
+    if (user !== env.BASIC_AUTH_USER || password !== env.BASIC_AUTH_PASSWORD) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
+
   const preferredLanguage = getNegotiatedLanguage(headers) || defaultLanguage;
-  console.log("preferredLanguage", preferredLanguage);
 
   const pathname = request.nextUrl.pathname;
   const pathnameIsMissingLocale = availableLanguages.every(
