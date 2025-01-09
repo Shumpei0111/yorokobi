@@ -1,0 +1,19 @@
+{
+  "question_weights": {
+    "mood": 0.4,
+    "impression": 0.3,
+    "beverage": 0.15,
+    "aroma": 0.1,
+    "food": 0.05
+  },
+  "category_weights": {
+    "daiginjo": 1.0,
+    "ginjo": 0.8,
+    "tokubetsu_junmai": 0.6,
+    "futsushu": 0.4,
+    "special_set": 0.7
+  },
+  "calculation": {
+    "formula": "(question_score * question_weight) * category_weight"
+  }
+}

@@ -1,0 +1,161 @@
+[
+  {
+    "id": 1,
+    "question": {
+      "ja": "飲むときの気分を教えてください",
+      "en": "What mood are you in for drinking?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "ja": "特別な日に飲むお酒を探している",
+          "en": "Looking for a drink for a special occasion"
+        },
+        "scores": { "premium": 3, "fruity": 2 }
+      },
+      {
+        "id": "b",
+        "text": {
+          "ja": "家でゆっくりしながら飲みたい",
+          "en": "Want to relax and drink at home"
+        },
+        "scores": { "mellow": 3, "balanced": 2 }
+      },
+      {
+        "id": "c",
+        "text": {
+          "ja": "友達と楽しく過ごす時に飲むお酒が欲しい",
+          "en": "Want a drink for a fun time with friends"
+        },
+        "scores": { "light": 3, "easyDrink": 2 }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": {
+      "ja": "日本酒にどんな印象を求めますか？",
+      "en": "What impression do you want from sake?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": { "ja": "すっきり爽やか", "en": "Crisp and refreshing" },
+        "scores": { "light": 3, "refreshing": 2 }
+      },
+      {
+        "id": "b",
+        "text": { "ja": "濃厚でコクがある", "en": "Rich and full-bodied" },
+        "scores": { "rich": 3, "mellow": 2 }
+      },
+      {
+        "id": "c",
+        "text": {
+          "ja": "フルーティーで香りが良い",
+          "en": "Fruity and aromatic"
+        },
+        "scores": { "fruity": 3, "aromatic": 2 }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": {
+      "ja": "好きな飲み物を選んでください",
+      "en": "Choose your favorite beverage"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "ja": "炭酸水（爽快感を重視）",
+          "en": "Sparkling water (focus on refreshment)"
+        },
+        "scores": { "light": 2, "refreshing": 3 }
+      },
+      {
+        "id": "b",
+        "text": {
+          "ja": "オレンジジュース（フルーティーな甘さが好き）",
+          "en": "Orange juice (love fruity sweetness)"
+        },
+        "scores": { "fruity": 3, "sweet": 2 }
+      },
+      {
+        "id": "c",
+        "text": {
+          "ja": "コーヒー（少し苦味のある深い味が好き）",
+          "en": "Coffee (enjoy rich and slightly bitter taste)"
+        },
+        "scores": { "rich": 3, "bitter": 2 }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": {
+      "ja": "どんな香りが好きですか？",
+      "en": "What kind of aroma do you like?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "ja": "フルーツの香り（リンゴやメロンなど）",
+          "en": "Fruity aroma (like apples or melons)"
+        },
+        "scores": { "fruity": 3, "aromatic": 2 }
+      },
+      {
+        "id": "b",
+        "text": {
+          "ja": "お米の香り（少し香ばしい感じ）",
+          "en": "Rice aroma (slightly roasted scent)"
+        },
+        "scores": { "mellow": 2, "rich": 3 }
+      },
+      {
+        "id": "c",
+        "text": {
+          "ja": "控えめな香り（あまり主張しない）",
+          "en": "Subtle aroma (not too strong)"
+        },
+        "scores": { "light": 3, "balanced": 2 }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": {
+      "ja": "一緒に楽しみたい料理を教えてください",
+      "en": "What kind of food would you like to enjoy with sake?"
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "ja": "刺身や寿司（和食全般）",
+          "en": "Sashimi or sushi (traditional Japanese food)"
+        },
+        "scores": { "umami": 3, "balanced": 2 }
+      },
+      {
+        "id": "b",
+        "text": {
+          "ja": "ピザやパスタ（洋食）",
+          "en": "Pizza or pasta (Western cuisine)"
+        },
+        "scores": { "fruity": 3, "light": 2 }
+      },
+      {
+        "id": "c",
+        "text": {
+          "ja": "餃子や麻婆豆腐（中華料理）",
+          "en": "Gyoza or mapo tofu (Chinese cuisine)"
+        },
+        "scores": { "rich": 3, "heavy": 2 }
+      }
+    ]
+  }
+]
