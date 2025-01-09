@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { dir } from "i18next";
+import { SelectLang } from "@/components/ui/select-lang";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,11 +27,15 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }>) {
   const { lang } = await params;
+
   return (
     <html lang={lang} dir={dir(lang)}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <nav>
+          <SelectLang />
+        </nav>
         <main className="flex flex-col items-center justify-center h-screen">
           {children}
         </main>
