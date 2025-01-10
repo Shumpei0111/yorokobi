@@ -18,6 +18,9 @@ export default async function Home({
             {t("home:味覚診断を始める")}
           </Link>
         </Button>
+        <p className="text-xs font-jost text-center mt-4">
+          {t("home:さあ、始めましょう")}
+        </p>
       </div>
     </div>
   );

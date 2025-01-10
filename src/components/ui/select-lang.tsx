@@ -29,11 +29,15 @@ export const SelectLang = () => {
 
   return (
     <Select onValueChange={handleLanguageChange}>
-      <SelectTrigger className="flex items-center gap-1 text-xs">
+      <SelectTrigger className="flex justify-center items-center gap-1 text-xs">
         <Globe className="w-4 h-4" />
         <SelectValue
           placeholder={
-            <p className="text-xs ">
+            <p
+              className={`${
+                currentLang === "ja" ? "font-hannariMincho" : "font-jost"
+              } text-xs`}
+            >
               {currentLang === "ja" ? "日本語" : "English"}
             </p>
           }
@@ -41,10 +45,10 @@ export const SelectLang = () => {
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectItem value="ja" className="text-xs">
+          <SelectItem value="ja" className="text-xs font-hannariMincho">
             日本語
           </SelectItem>
-          <SelectItem value="en" className="text-xs">
+          <SelectItem value="en" className="text-xs font-jost">
             English
           </SelectItem>
         </SelectGroup>

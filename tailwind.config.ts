@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         montserrat: ["var(--font-montserrat)", "sans-serif"],
         hannariMincho: ["var(--font-hannari-mincho)", "sans-serif"],
+        jost: ["var(--font-jost)", "sans-serif"],
       },
       colors: {
         background: "hsl(var(--background))",
