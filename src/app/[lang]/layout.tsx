@@ -32,10 +32,10 @@ export default async function RootLayout({
   return (
     <html lang={lang} dir={dir(lang)}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden grid grid-rows-[auto_1fr_auto] grid-cols-1 min-h-screen `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden  grid grid-rows-[auto_1fr_auto] grid-cols-1 min-h-screen `}
       >
         <div className="px-4">
-          <header className="w-full flex justify-between items-center py-2 ">
+          <header className="w-full flex justify-between items-center py-4 ">
             <h1 className="text-2xl font-bold">
               <Link href="/">Yorokobi</Link>
             </h1>
