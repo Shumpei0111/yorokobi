@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { dir } from "i18next";
 import { SelectLang } from "@/components/ui/select-lang";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,14 +32,20 @@ export default async function RootLayout({
   return (
     <html lang={lang} dir={dir(lang)}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden grid grid-rows-[auto_1fr_auto] grid-cols-1 min-h-screen `}
       >
-        <nav>
-          <SelectLang />
-        </nav>
-        <main className="flex flex-col items-center justify-center h-screen">
-          {children}
-        </main>
+        <div className="px-4">
+          <header className="w-full flex justify-between items-center py-2 ">
+            <h1 className="text-2xl font-bold">
+              <Link href="/">Yorokobi</Link>
+            </h1>
+            <nav>
+              <SelectLang />
+            </nav>
+          </header>
+        </div>
+
+        <main className="relative w-full">{children}</main>
         <footer className="mx-auto w-full">
           <small className="text-xs text-gray-500 text-center w-full inline-block">
             © 2025 Yorokobi All rights reserved. | Made by{" "}
