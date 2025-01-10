@@ -1,4 +1,5 @@
 "use client";
+import { defaultLanguage } from "@/app/i18n/settings";
 import {
   Select,
   SelectContent,
@@ -14,9 +15,9 @@ export const SelectLang = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const currentLang = pathname.split("/")[1];
+  const currentLang = pathname.split("/")[1] || defaultLanguage;
   const handleLanguageChange = (lang: string) => {
-    const currentPath = window.location.pathname;
+    const currentPath = pathname;
     const newPath = currentPath.replace(
       `/${currentPath.split("/")[1]}`,
       `/${lang}`
