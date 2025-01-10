@@ -1,7 +1,7 @@
 import { createInstance } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
-import { getOptions, defaultLanguage } from "./settings";
+import { getOptions, defaultLanguage, Language } from "./settings";
 
 const initI18next = async (lang: string) => {
   const i18nInstance = createInstance();
@@ -13,7 +13,7 @@ const initI18next = async (lang: string) => {
           import(`./locales/${language}/${namespace}.json`)
       )
     )
-    .init(getOptions(lang));
+    .init(getOptions(lang as Language));
   return i18nInstance;
 };
 

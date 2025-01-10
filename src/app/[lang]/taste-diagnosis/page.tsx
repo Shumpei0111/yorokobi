@@ -1,11 +1,11 @@
 import { QuestionSlider } from "@/app/feature/taste-diagnosis/slider";
 import { getTranslation } from "@/app/i18n/server";
-import { availableLanguages } from "@/app/i18n/settings";
+import { type Language } from "@/app/i18n/settings";
 
 export default async function TasteDiagnosisPage({
   params,
 }: {
-  params: Promise<{ lang: (typeof availableLanguages)[number] }>;
+  params: Promise<{ lang: Language }>;
 }) {
   const { lang } = await params;
   const { t } = await getTranslation(lang);

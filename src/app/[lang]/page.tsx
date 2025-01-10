@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { getTranslation } from "@/app/i18n/server";
 import Link from "next/link";
-import { availableLanguages } from "../i18n/settings";
+import { type Language } from "../i18n/settings";
 
 export default async function Home({
   params,
 }: {
-  params: Promise<{ lang: (typeof availableLanguages)[number] }>;
+  params: Promise<{ lang: Language }>;
 }) {
   const { lang } = await params;
   const { t } = await getTranslation(lang);
