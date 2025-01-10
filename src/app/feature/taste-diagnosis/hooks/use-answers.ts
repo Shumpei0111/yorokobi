@@ -9,6 +9,7 @@ import {
 } from "../types/questions";
 import { calculateScores } from "../helpers/calculateScores";
 import scoringConfig from "@/app/data/scoring-config.json";
+import categorizedBrands from "@/app/data/categorized-brands.json";
 
 export const useAnswers = (questions: Question[]) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -31,6 +32,9 @@ export const useAnswers = (questions: Question[]) => {
     });
     setScores(scores);
     console.log(scores);
+
+    // 診断結果をもとにデータ取得
+    console.log(categorizedBrands);
   };
 
   return {

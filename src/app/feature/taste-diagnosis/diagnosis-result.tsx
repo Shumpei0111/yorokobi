@@ -28,6 +28,12 @@ export const DiagnosisResult = ({
             </div>
           ))}
         </div>
+        <small>
+          <a href="https://sakenowa.com" target="_blank" rel="noopener">
+            さけのわデータ
+          </a>
+          を利用しています
+        </small>
       </motion.div>
     </AnimatePresence>
   );

@@ -16,18 +16,10 @@ export const QuestionCards = ({
 }) => {
   return (
     <AnimatePresence>
-      <nav className="inline-flex items-center gap-4 py-2 px-4">
-        {Array.from({ length: questions.length }).map((_, index) => (
-          <div key={index} className="w-full h-full">
-            <span
-              className={`${
-                index <= currentIndex ? "bg-gray-300 " : "bg-white "
-              } rounded-full py-1 px-2 border `}
-            >
-              {index + 1}
-            </span>
-          </div>
-        ))}
+      <nav className="flex justify-center items-center gap-4 py-2 px-4">
+        <span className="text-sm font-montserrat">
+          {currentIndex + 1} — {questions.length}
+        </span>
       </nav>
       <motion.div
         key={currentIndex}
