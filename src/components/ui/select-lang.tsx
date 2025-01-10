@@ -7,24 +7,36 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useRouter } from "next/navigation";
+import { Globe } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 
 export const SelectLang = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
+  const currentLang = pathname.split("/")[1];
   const handleLanguageChange = (lang: string) => {
     const currentPath = window.location.pathname;
     const newPath = currentPath.replace(
       `/${currentPath.split("/")[1]}`,
       `/${lang}`
     );
-    router.push(newPath);
+    if (currentPath !== newPath) {
+      router.push(newPath);
+    }
   };
 
   return (
     <Select onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-[140px] text-xs">
-        <SelectValue placeholder="Select a language" />
+      <SelectTrigger className="flex items-center gap-1 text-xs">
+        <Globe className="w-4 h-4" />
+        <SelectValue
+          placeholder={
+            <p className="text-xs ">
+              {currentLang === "ja" ? "日本語" : "English"}
+            </p>
+          }
+        />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
