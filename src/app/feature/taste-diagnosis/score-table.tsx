@@ -27,7 +27,7 @@ export const ScoreTable = ({
 
   return (
     <div className="border-b border-gray-200 py-2 px-5">
-      <div className="grid grid-cols-[80px_50px_1fr] items-center">
+      <div className="grid grid-cols-[80px_70px_1fr] items-center">
         <p className="font-bold">{label}</p>
         <div className="w-[70px] h-[1px] bg-black" />
         <p
@@ -36,7 +36,7 @@ export const ScoreTable = ({
           }`}
         >
           {isHighestScore && (
-            <span className="text-[10px] border border-blue-500 rounded-full px-2 py-0.5 mx-2">
+            <span className="text-[10px] border border-blue-500 rounded-full px-2 py-0.5 mx-2 bg-slate-50">
               {t("taste-diagnosis:あなたにおすすめ")}
             </span>
           )}

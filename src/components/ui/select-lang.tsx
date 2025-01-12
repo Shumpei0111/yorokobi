@@ -28,7 +28,7 @@ export const SelectLang = () => {
 
   return (
     <Select onValueChange={handleLanguageChange}>
-      <SelectTrigger className="flex justify-center items-center gap-1 text-xs">
+      <SelectTrigger className="flex justify-center items-center gap-1 text-xs bg-slate-50">
         <Globe className="w-4 h-4" />
         <SelectValue
           placeholder={

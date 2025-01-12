@@ -105,7 +105,7 @@ export const DiagnosisResult = ({
             ))}
           </div>
         </motion.div>
-        <div className="flex justify-center">
+        <div className="flex justify-center my-10">
           <Button variant="outline" onClick={() => window.location.reload()}>
             {t("taste-diagnosis:診断をやり直す")}
           </Button>

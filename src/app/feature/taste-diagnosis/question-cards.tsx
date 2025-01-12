@@ -36,7 +36,7 @@ export const QuestionCards = ({
           {questions[currentIndex].options.map((option, index) => (
             <button
               key={index}
-              className="bg-blue-500 text-white py-2 px-4 rounded shadow hover:bg-blue-600"
+              className="bg-blue-500 text-white py-2 px-4 rounded shadow hover:bg-blue-600 font-jost text-sm"
               onClick={() => {
                 handleAnswer(option.scores);
               }}

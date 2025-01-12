@@ -44,14 +44,14 @@ export default async function RootLayout({
           jost.variable
         } ${
           lang === "ja" ? "font-hannariMincho" : "font-jost"
-        } antialiased overflow-x-hidden flex flex-col min-h-screen bg-background relative`}
+        } antialiased overflow-x-hidden flex flex-col min-h-screen relative bg-[#EDEDED]`}
       >
         <GlobalHeader lang={lang} />
         <main style={{ flex: 1 }} className="relative w-full">
           {children}
         </main>
         <GlobalFooter />
-        <div className="fixed inset-0 top-0 left-0 w-full h-full z-[-1] opacity-20">
+        <div className="fixed inset-0 top-0 left-0 w-full h-full z-[-1] opacity-30">
           <Brightness />
         </div>
       </body>

@@ -10,10 +10,12 @@ export default async function Home({
   const { lang } = await params;
   const { t } = await getTranslation(lang);
   return (
-    <div className="absolute w-full h-full flex justify-center items-center">
-      <div className="flex flex-col items-center gap-4">
-        <strong className="text-2xl block text-center font-sans">
-          {t("home:あなたにぴったりの日本酒を提案します")}
+    <div className="absolute w-full h-full flex justify-center items-center px-4">
+      <div className="flex flex-col items-center gap-6">
+        <strong className="text-xl block font-sans">
+          {t("common:ヒーロー:1行目")}
+          <br />
+          {t("common:ヒーロー:2行目")}
         </strong>
         <Link
           href={`/${lang}/taste-diagnosis`}
