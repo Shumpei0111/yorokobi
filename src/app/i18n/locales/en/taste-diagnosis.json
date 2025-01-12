@@ -1,7 +1,12 @@
 {
   "診断結果": "Diagnosis Result",
+  "あなたにおすすめ": "Recommended",
   "大吟醸": "Daiginjo",
+  "大吟醸とは": "大吟醸 / A luxurious sake made with rice polished to less than 50% of its original size. It features a fruity and elegant aroma with a silky smooth texture, perfect for special occasions.",
   "純米吟醸": "Junmai Ginjo",
+  "純米吟醸とは": "純米吟醸 / Junmai Ginjo is crafted with rice polished to less than 60% of its original size, offering a delicate and fruity aroma. It pairs wonderfully with meals, making it ideal during dining.",
   "特別純米": "Tokubetsu Junmai",
-  "普通酒": "Futsushu"
+  "特別純米とは": "特別純米 / A special type of Junmai sake brewed with unique methods or rice polished to less than 60%. It balances richness with a clean finish, pairing well with various dishes.",
+  "普通酒": "Futsushu",
+  "普通種とは": "普通酒 / The most approachable type of sake. There are no strict rules for rice polishing, but it's often regarded as the 'table wine' of sake, perfect for casual, everyday enjoyment."
 }

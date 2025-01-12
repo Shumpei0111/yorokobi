@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { getTranslation } from "@/app/i18n/server";
 import Link from "next/link";
 import { type Language } from "../i18n/settings";

@@ -17,6 +17,7 @@
     "@react-three/drei": "^9.120.6",
     "@react-three/fiber": "^9.0.0-alpha.8",
     "@t3-oss/env-nextjs": "^0.11.1",
+    "apexcharts": "^4.3.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "i18next": "^24.2.1",
@@ -28,11 +29,13 @@
     "next": "15.1.4",
     "next-i18next": "^15.4.1",
     "react": "^19.0.0",
+    "react-apexcharts": "^1.7.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.172.0",
+    "ts-pattern": "^5.6.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
