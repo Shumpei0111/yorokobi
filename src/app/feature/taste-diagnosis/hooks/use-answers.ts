@@ -21,6 +21,7 @@ export const useAnswers = (questions: Question[]) => {
     tokubetsuJunmai: 0,
     futsushu: 0,
   });
+  const [done, setDone] = useState<boolean>(false);
 
   const handleAnswer = (answer: UserAnswer) => {
     setAnswers([...answers, answer]);
@@ -36,17 +37,14 @@ export const useAnswers = (questions: Question[]) => {
       weights: scoringConfig as ScoringConfig,
     });
     setScores(scores);
-    console.log(scores);
-
-    // 診断結果をもとにデータ取得
-    console.log(categorizedBrands);
+    setDone(true);
   };
 
   return {
     currentIndex,
     answers,
     progress,
-    done: Object.keys(scores).length > 0,
+    done,
     scores,
     handleAnswer,
   };
