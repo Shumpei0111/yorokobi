@@ -5,6 +5,7 @@ import { type Language } from "@/app/i18n/settings";
 import { RadarChart } from "./radar-chart";
 import { transformScoreKey } from "./helpers/transformScoreKey";
 import { ScoreTable } from "./score-table";
+import { Button } from "@/components/ui/button";
 
 /** 診断結果 */
 export const DiagnosisResult = ({
@@ -77,6 +78,11 @@ export const DiagnosisResult = ({
             />
           </div>
         </motion.div>
+        <div className="flex justify-center">
+          <Button variant="outline" onClick={() => window.location.reload()}>
+            {t("taste-diagnosis:診断をやり直す")}
+          </Button>
+        </div>
       </div>
     </AnimatePresence>
   );
