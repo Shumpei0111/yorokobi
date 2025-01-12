@@ -24,7 +24,7 @@ const hannariMincho = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Yorokobi",
+  title: "Yorokobi - Discover Your Perfect Sake.",
   description: "Discover Your Perfect Sake.日本酒の喜びを、あなたに。",
 };
 
@@ -40,13 +40,11 @@ export default async function RootLayout({
   return (
     <html lang={lang} dir={dir(lang)}>
       <body
-        className={`
-          ${montserrat.variable}
-          ${hannariMincho.variable}
-          ${jost.variable}
-          ${lang === "ja" ? "font-hannariMincho" : "font-jost"}
-          antialiased overflow-x-hidden  
-          flex flex-col min-h-screen           bg-background relative`}
+        className={`${montserrat.variable} ${hannariMincho.variable} ${
+          jost.variable
+        } ${
+          lang === "ja" ? "font-hannariMincho" : "font-jost"
+        } antialiased overflow-x-hidden flex flex-col min-h-screen bg-background relative`}
       >
         <GlobalHeader lang={lang} />
         <main style={{ flex: 1 }} className="relative w-full">
