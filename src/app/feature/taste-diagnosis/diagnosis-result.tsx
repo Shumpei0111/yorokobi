@@ -1,11 +1,12 @@
 import { AnimatePresence, motion } from "motion/react";
-import { Scores } from "./types/questions";
+import { ScoreKeys, Scores } from "./types/questions";
 import { useTranslation } from "@/app/i18n/client";
 import { type Language } from "@/app/i18n/settings";
 import { RadarChart } from "./radar-chart";
 import { transformScoreKey } from "./helpers/transformScoreKey";
 import { ScoreTable } from "./score-table";
 import { Button } from "@/components/ui/button";
+import { Trans } from "react-i18next";
 
 /** 診断結果 */
 export const DiagnosisResult = ({
@@ -22,7 +23,9 @@ export const DiagnosisResult = ({
   const highestScoreType = Object.keys(scores).find(
     (key) => scores[key as keyof Scores] === highestScore
   );
-  console.log("highestScoreType: ", highestScoreType);
+
+  // スコア順にソート
+  const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
 
   return (
     <AnimatePresence>
@@ -47,35 +50,29 @@ export const DiagnosisResult = ({
               {isJa ? " を利用しています" : " is used."}
             </small>
           </div>
+          <div className="text-md my-10 text-center">
+            <Trans
+              i18nKey="taste-diagnosis:あなたにおすすめの日本酒は"
+              t={t}
+              components={{
+                strong: <strong />,
+              }}
+              values={{
+                type: transformScoreKey(highestScoreType as ScoreKeys, t),
+              }}
+            />
+          </div>
           <div className="text-sm my-10">
-            <ScoreTable
-              type="daiginjo"
-              lang={lang}
-              label={transformScoreKey("daiginjo", t)}
-              score={scores.daiginjo}
-              isHighestScore={highestScoreType === "daiginjo"}
-            />
-            <ScoreTable
-              type="junmaiGinjo"
-              lang={lang}
-              label={transformScoreKey("junmaiGinjo", t)}
-              score={scores.junmaiGinjo}
-              isHighestScore={highestScoreType === "junmaiGinjo"}
-            />
-            <ScoreTable
-              type="tokubetsuJunmai"
-              lang={lang}
-              label={transformScoreKey("tokubetsuJunmai", t)}
-              score={scores.tokubetsuJunmai}
-              isHighestScore={highestScoreType === "tokubetsuJunmai"}
-            />
-            <ScoreTable
-              type="futsushu"
-              lang={lang}
-              label={transformScoreKey("futsushu", t)}
-              score={scores.futsushu}
-              isHighestScore={highestScoreType === "futsushu"}
-            />
+            {sortedScores.map(([type, score]) => (
+              <ScoreTable
+                key={type}
+                type={type as ScoreKeys}
+                lang={lang}
+                label={transformScoreKey(type as ScoreKeys, t)}
+                score={score}
+                isHighestScore={highestScoreType === type}
+              />
+            ))}
           </div>
         </motion.div>
         <div className="flex justify-center">

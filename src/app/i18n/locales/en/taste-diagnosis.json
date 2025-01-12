@@ -2,6 +2,7 @@
   "おすすめ日本酒診断": "Recommended Sake Diagnosis",
   "あなたにぴったりの日本酒を提案します": "Find the perfect sake for you",
   "診断結果": "Diagnosis Result",
+  "あなたにおすすめの日本酒は": "The recommended sake for you is <strong>{{type}}</strong>.",
   "あなたにおすすめ": "Recommended",
   "診断をやり直す": "Retry Diagnosis",
   "大吟醸": "Daiginjo",
