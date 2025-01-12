@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
-    "generate-static-sake-data": "node scripts/generateStaticSakeData.mjs"
+    "generate-static-sake-data": "node scripts/generateStaticSakeData.mjs",
+    "generate-ranked-brands": "node scripts/generateRankedData.mjs"
   },
   "dependencies": {
     "@funtech-inc/use-shader-fx": "^1.1.43",
