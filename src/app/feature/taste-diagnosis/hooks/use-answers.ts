@@ -9,7 +9,6 @@ import {
 } from "../types/questions";
 import { calculateScores } from "../helpers/calculateScores";
 import scoringConfig from "@/app/data/scoring-config.json";
-import categorizedBrands from "@/app/data/categorized-brands.json";
 
 export const useAnswers = (questions: Question[]) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
