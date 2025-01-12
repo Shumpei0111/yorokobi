@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { Scores } from "./types/questions";
+import { ScoreKeys, Scores } from "./types/questions";
 import { useTranslation } from "@/app/i18n/client";
 import { type Language } from "@/app/i18n/settings";
 
@@ -12,6 +12,21 @@ export const DiagnosisResult = ({
   lang: Language;
 }) => {
   const { t } = useTranslation(lang);
+
+  const transformScoreKey = (key: ScoreKeys) => {
+    switch (key) {
+      case "daiginjo":
+        return t("taste-diagnosis:大吟醸");
+      case "junmaiGinjo":
+        return t("taste-diagnosis:純米吟醸");
+      case "tokubetsuJunmai":
+        return t("taste-diagnosis:特別純米");
+      case "futsushu":
+        return t("taste-diagnosis:普通酒");
+      default:
+        return key;
+    }
+  };
   return (
     <AnimatePresence>
       <motion.div
@@ -24,15 +39,15 @@ export const DiagnosisResult = ({
         <div>
           {Object.entries(scores).map(([key, value]) => (
             <div key={key}>
-              {key}: {value}
+              {transformScoreKey(key as keyof Scores)}: {value}
             </div>
           ))}
         </div>
-        <small>
+        <small className="text-xs">
           <a href="https://sakenowa.com" target="_blank" rel="noopener">
             さけのわデータ
           </a>
-          を利用しています
+          {lang === "ja" ? " を利用しています" : " is used."}
         </small>
       </motion.div>
     </AnimatePresence>

@@ -1,3 +1,7 @@
 {
-  "診断結果": "Diagnosis Result"
+  "診断結果": "Diagnosis Result",
+  "大吟醸": "Daiginjo",
+  "純米吟醸": "Junmai Ginjo",
+  "特別純米": "Tokubetsu Junmai",
+  "普通酒": "Futsushu"
 }

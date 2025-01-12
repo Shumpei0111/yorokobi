@@ -11,13 +11,17 @@
     "generate-static-sake-data": "node scripts/generateStaticSakeData.mjs"
   },
   "dependencies": {
+    "@funtech-inc/use-shader-fx": "^1.1.43",
     "@radix-ui/react-select": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
+    "@react-three/drei": "^9.120.6",
+    "@react-three/fiber": "^9.0.0-alpha.8",
     "@t3-oss/env-nextjs": "^0.11.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "i18next": "^24.2.1",
     "i18next-resources-to-backend": "^1.2.1",
+    "lil-gui": "^0.20.0",
     "lucide-react": "^0.469.0",
     "motion": "^11.16.4",
     "negotiator": "^1.0.0",
@@ -28,6 +32,7 @@
     "react-i18next": "^15.4.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.172.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -36,6 +41,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.172.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "eslint-plugin-unused-imports": "^4.1.4",

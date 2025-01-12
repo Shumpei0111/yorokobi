@@ -5,7 +5,8 @@ import { dir } from "i18next";
 import { GlobalHeader } from "@/components/global/global-header/global-header";
 import { Language } from "../i18n/settings";
 import "./globals.css";
-import { GlobalFooter } from "@/components/global/global-footer";
+import { GlobalFooter } from "@/components/global/global-footer/global-footer";
+import { Brightness } from "@/components/global/brightness/brightness";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -44,11 +45,17 @@ export default async function RootLayout({
           ${hannariMincho.variable}
           ${jost.variable}
           ${lang === "ja" ? "font-hannariMincho" : "font-jost"}
-          antialiased overflow-x-hidden  grid grid-rows-[auto_1fr_auto] grid-cols-1 min-h-screen bg-background`}
+          antialiased overflow-x-hidden  
+          flex flex-col min-h-screen           bg-background relative`}
       >
         <GlobalHeader lang={lang} />
-        <main className="relative w-full">{children}</main>
+        <main style={{ flex: 1 }} className="relative w-full">
+          {children}
+        </main>
         <GlobalFooter />
+        <div className="fixed inset-0 top-0 left-0 w-full h-full z-[-1] opacity-20">
+          <Brightness />
+        </div>
       </body>
     </html>
   );
