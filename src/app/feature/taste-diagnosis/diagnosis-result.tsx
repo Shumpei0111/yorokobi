@@ -7,6 +7,9 @@ import { transformScoreKey } from "./helpers/transformScoreKey";
 import { ScoreTable } from "./score-table";
 import { Button } from "@/components/ui/button";
 import { Trans } from "react-i18next";
+import Link from "next/link";
+import { generateShareUrl } from "./helpers/generateShareUrl";
+import { Share2, X } from "lucide-react";
 
 /** 診断結果 */
 export const DiagnosisResult = ({
@@ -26,6 +29,11 @@ export const DiagnosisResult = ({
 
   // スコア順にソート
   const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+
+  const { xShareUrl, lineShareUrl } = generateShareUrl(
+    highestScoreType as ScoreKeys,
+    t
+  );
 
   return (
     <AnimatePresence>
@@ -61,6 +69,28 @@ export const DiagnosisResult = ({
                 type: transformScoreKey(highestScoreType as ScoreKeys, t),
               }}
             />
+            <div className="flex justify-center gap-4 text-xs my-4">
+              <Link
+                className="border text-gray-50 font-bold rounded-md px-4 py-1 font-sans flex items-center justify-center gap-2 bg-[#3FCC40]"
+                href={lineShareUrl}
+                target="_blank"
+                rel="noopener"
+                aria-label={t("common:LINEで共有")}
+              >
+                <Share2 className="w-4 h-4" />
+                {t("common:LINEで共有")}
+              </Link>
+              <Link
+                className="border text-gray-50 font-bold rounded-md px-4 py-1 font-sans flex items-center justify-center gap-2 bg-[#379AF0]"
+                href={xShareUrl}
+                target="_blank"
+                rel="noopener"
+                aria-label={t("common:Xで共有")}
+              >
+                <X className="w-4 h-4" />
+                {t("common:Xで共有")}
+              </Link>
+            </div>
           </div>
           <div className="text-sm my-10">
             {sortedScores.map(([type, score]) => (

@@ -9,10 +9,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Globe } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export const SelectLang = () => {
-  const router = useRouter();
   const pathname = usePathname();
 
   const currentLang = pathname.split("/")[1] || defaultLanguage;
@@ -23,7 +22,7 @@ export const SelectLang = () => {
       `/${lang}`
     );
     if (currentPath !== newPath) {
-      router.push(newPath);
+      window.location.href = newPath;
     }
   };
 
