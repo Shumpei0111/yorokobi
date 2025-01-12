@@ -47,11 +47,17 @@ const saveToFile = async (data, outputPath) => {
 // メイン処理
 const generateRankedBrands = async () => {
   try {
-    console.log("ランキングデータを取得中...");
-    const rankingsData = await fetchRankings();
+    console.log("データを取得中...");
+    const [rankingsData, brands] = await Promise.all([
+      fetchRankings(),
+      loadBrandData(),
+    ]);
 
-    console.log("ブランドデータを読み込み中...");
-    const brands = await loadBrandData();
+    console.log(
+      `ランキングデータ（overall）: ${rankingsData.overall.length}件`
+    );
+    console.log(`ランキングデータ（areas）: ${rankingsData.areas.length}件`);
+    console.log(`ブランドデータ: ${brands.length}件`);
 
     console.log("データを結合中...");
     const overallRankings = mergeData(rankingsData.overall, brands);
