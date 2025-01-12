@@ -15,7 +15,7 @@ export const generateShareUrl = (scoreType: ScoreKeys, t: TFunction) => {
   );
 
   const lineShareUrl = encodeURI(
-    `https://line.me/R/msg/text/?${shareText}%0A${window.location.href}`
+    `https://line.me/R/msg/text/?${shareText}${window.location.href}`
   );
 
   return { xShareUrl, lineShareUrl };
