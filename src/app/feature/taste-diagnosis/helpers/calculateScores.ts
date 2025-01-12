@@ -1,4 +1,4 @@
-import { UserAnswer, Weights } from "../types/questions";
+import { Scores, UserAnswer, Weights } from "../types/questions";
 
 export const calculateScores = ({
   userAnswers,
@@ -6,7 +6,7 @@ export const calculateScores = ({
 }: {
   userAnswers: UserAnswer[];
   weights: Weights;
-}): Record<string, number> => {
+}): Scores => {
   const { questionWeights, categoryWeights } = weights;
 
   // スコアの初期化
@@ -23,9 +23,14 @@ export const calculateScores = ({
   });
 
   // カテゴリごとのスコア計算
-  const categoryScores: Record<string, number> = {};
+  const categoryScores: Scores = {
+    daiginjo: 0,
+    junmaiGinjo: 0,
+    tokubetsuJunmai: 0,
+    futsushu: 0,
+  };
   Object.entries(categoryWeights).forEach(([categoryId, weight]) => {
-    categoryScores[categoryId] = roundTo(
+    categoryScores[categoryId as keyof Scores] = roundTo(
       Object.entries(questionScores).reduce(
         (sum, [key, value]) => sum + value * (weight[key] || 0),
         0

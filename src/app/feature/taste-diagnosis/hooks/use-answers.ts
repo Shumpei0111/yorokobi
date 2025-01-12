@@ -15,7 +15,12 @@ export const useAnswers = (questions: Question[]) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [answers, setAnswers] = useState<UserAnswer[]>([]);
   const [progress, setProgress] = useState<number>(1);
-  const [scores, setScores] = useState<Scores>({});
+  const [scores, setScores] = useState<Scores>({
+    daiginjo: 0,
+    junmaiGinjo: 0,
+    tokubetsuJunmai: 0,
+    futsushu: 0,
+  });
 
   const handleAnswer = (answer: UserAnswer) => {
     setAnswers([...answers, answer]);
