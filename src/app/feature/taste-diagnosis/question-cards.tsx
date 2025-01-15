@@ -49,7 +49,7 @@ export const QuestionCards = ({
 
   return (
     <AnimatePresence>
-      <div className="min-h-screen">
+      <div className="min-h-screen max-w-[600px] mx-auto">
         <nav className="flex flex-col justify-center items-center gap-4 py-2 px-4">
           <span className="text-sm font-montserrat">
             Q.{currentIndex + 1} — {questions.length}
@@ -62,7 +62,7 @@ export const QuestionCards = ({
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -100, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute  top-[20%]  w-full flex flex-col justify-center items-center  rounded p-6"
+          className="absolute  top-[20%] flex flex-col justify-center items-center  rounded p-6"
         >
           <h3 className="text-xl font-bold mb-4">
             {questions[currentIndex].question[lang]}
@@ -83,7 +83,7 @@ export const QuestionCards = ({
               </button>
             ))}
           </div>
-          <div className="py-4 grid grid-cols-2 w-full">
+          <div className="py-4 w-full">
             <Button
               variant="outline"
               onClick={handleBack}

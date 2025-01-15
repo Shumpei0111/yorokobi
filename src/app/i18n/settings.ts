@@ -1,6 +1,11 @@
 export const defaultLanguage = "ja";
 export const availableLanguages = [defaultLanguage, "en"] as const;
-export const namespaces = ["common", "home", "taste-diagnosis"] as const;
+export const namespaces = [
+  "common",
+  "home",
+  "taste-diagnosis",
+  "sake-category",
+] as const;
 
 export type Language = (typeof availableLanguages)[number];
 

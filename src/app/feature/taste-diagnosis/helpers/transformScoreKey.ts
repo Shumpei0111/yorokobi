@@ -7,13 +7,13 @@ export const transformScoreKey = (
 ) => {
   switch (key) {
     case "daiginjo":
-      return t("taste-diagnosis:大吟醸");
+      return t("sake-category:大吟醸");
     case "junmaiGinjo":
-      return t("taste-diagnosis:純米吟醸");
+      return t("sake-category:純米吟醸");
     case "tokubetsuJunmai":
-      return t("taste-diagnosis:特別純米");
+      return t("sake-category:特別純米");
     case "futsushu":
-      return t("taste-diagnosis:普通酒");
+      return t("sake-category:普通酒");
     default:
       return key;
   }
