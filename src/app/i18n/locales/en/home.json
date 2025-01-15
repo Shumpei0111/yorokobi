@@ -1,5 +1,7 @@
 {
-  "味覚診断を始める": "Start Taste Diagnosis",
-  "さあ、始めましょう": "Let's get started",
-  "あなたにぴったりの日本酒を提案します": "Discover Your Perfect Sake"
+  "味覚診断を始める": "Start the Taste Test",
+  "ヒーロー": {
+    "1行目": "Discover Your Ideal Sake.",
+    "2行目": "A Personalized Journey for Your Palate"
+  }
 }
