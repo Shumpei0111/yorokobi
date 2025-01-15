@@ -7,6 +7,7 @@ import { Language } from "../i18n/settings";
 import "./globals.css";
 import { GlobalFooter } from "@/components/global/global-footer/global-footer";
 import { Brightness } from "@/components/global/brightness/brightness";
+import { FirstCheckDialog } from "@/components/global/first-check-dialog";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -54,6 +55,7 @@ export default async function RootLayout({
         <div className="fixed inset-0 top-0 left-0 w-full h-full z-[-1] opacity-30">
           <Brightness />
         </div>
+        <FirstCheckDialog lang={lang} />
       </body>
     </html>
   );

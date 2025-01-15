@@ -2,159 +2,270 @@
   {
     "id": 1,
     "question": {
-      "ja": "飲むときの気分を教えてください",
-      "en": "What mood are you in for drinking?"
+      "ja": "どんなシチュエーションで日本酒を飲みたいですか？",
+      "en": "In what situation do you want to enjoy sake?"
     },
     "options": [
       {
         "id": "a",
         "text": {
-          "ja": "特別な日に飲むお酒を探している",
-          "en": "Looking for a drink for a special occasion"
+          "ja": "特別な記念日やお祝い",
+          "en": "For a special occasion or celebration"
         },
-        "scores": { "premium": 3, "fruity": 2 }
+        "subText": {
+          "ja": "「晴れの日」にふさわしい華やかさがあるお酒がいい",
+          "en": "Looking for a sake that matches the “big day” vibe"
+        },
+        "scores": {
+          "premium": 3,
+          "fruity": 2
+        }
       },
       {
         "id": "b",
         "text": {
-          "ja": "家でゆっくりしながら飲みたい",
-          "en": "Want to relax and drink at home"
+          "ja": "家でまったりリラックス",
+          "en": "Relaxing at home"
         },
-        "scores": { "mellow": 3, "balanced": 2 }
+        "subText": {
+          "ja": "普段使いしやすく、疲れを癒してくれるお酒がいい",
+          "en": "Something that fits everyday use and helps me unwind"
+        },
+        "scores": {
+          "mellow": 3,
+          "balanced": 2
+        }
       },
       {
         "id": "c",
         "text": {
-          "ja": "友達と楽しく過ごす時に飲むお酒が欲しい",
-          "en": "Want a drink for a fun time with friends"
+          "ja": "友人や家族とワイワイ",
+          "en": "Having fun with friends or family"
         },
-        "scores": { "light": 3, "easyDrink": 2 }
+        "subText": {
+          "ja": "みんなで楽しく飲めて盛り上がれるお酒がいい",
+          "en": "A sake that’s easy to share and keeps the mood lively"
+        },
+        "scores": {
+          "light": 3,
+          "easyDrink": 2
+        }
       }
     ]
   },
   {
     "id": 2,
     "question": {
-      "ja": "日本酒にどんな印象を求めますか？",
-      "en": "What impression do you want from sake?"
+      "ja": "日本酒で重視したい味わいは何ですか？",
+      "en": "Which taste aspect do you value most in sake?"
     },
     "options": [
       {
         "id": "a",
-        "text": { "ja": "すっきり爽やか", "en": "Crisp and refreshing" },
-        "scores": { "light": 3, "refreshing": 2 }
+        "text": {
+          "ja": "フルーティーで香り高い",
+          "en": "Fruity & aromatic"
+        },
+        "subText": {
+          "ja": "口に含んだ瞬間に広がる香りを楽しみたい",
+          "en": "I love the burst of fragrance when I take a sip"
+        },
+        "scores": {
+          "fruity": 3,
+          "aromatic": 2
+        }
       },
       {
         "id": "b",
-        "text": { "ja": "濃厚でコクがある", "en": "Rich and full-bodied" },
-        "scores": { "rich": 3, "mellow": 2 }
+        "text": {
+          "ja": "コクと旨味がしっかり",
+          "en": "Full-bodied with rich flavor"
+        },
+        "subText": {
+          "ja": "飲みごたえ重視、深い味わいを感じたい",
+          "en": "Deep taste and a solid umami punch are important to me"
+        },
+        "scores": {
+          "rich": 3,
+          "umami": 2
+        }
       },
       {
         "id": "c",
         "text": {
-          "ja": "フルーティーで香りが良い",
-          "en": "Fruity and aromatic"
+          "ja": "すっきり＆飲みやすい",
+          "en": "Clean & easy to drink"
         },
-        "scores": { "fruity": 3, "aromatic": 2 }
+        "subText": {
+          "ja": "クセが少なく、食事にも合わせやすいお酒がいい",
+          "en": "I prefer something light that pairs well with various foods"
+        },
+        "scores": {
+          "light": 3,
+          "easyDrink": 2
+        }
       }
     ]
   },
   {
     "id": 3,
     "question": {
-      "ja": "好きな飲み物を選んでください",
-      "en": "Choose your favorite beverage"
+      "ja": "一緒に楽しみたい料理は？",
+      "en": "What kind of food would you pair with your sake?"
     },
     "options": [
       {
         "id": "a",
         "text": {
-          "ja": "炭酸水（爽快感を重視）",
-          "en": "Sparkling water (focus on refreshment)"
+          "ja": "繊細な和食（刺身・寿司など）",
+          "en": "Delicate Japanese dishes (sashimi, sushi, etc.)"
         },
-        "scores": { "light": 2, "refreshing": 3 }
+        "subText": {
+          "ja": "素材の味わいを邪魔しない、相乗効果を楽しみたい",
+          "en": "Looking for something that complements subtle flavors"
+        },
+        "scores": {
+          "balanced": 3,
+          "umami": 2
+        }
       },
       {
         "id": "b",
         "text": {
-          "ja": "オレンジジュース（フルーティーな甘さが好き）",
-          "en": "Orange juice (love fruity sweetness)"
+          "ja": "旨味たっぷりの洋食・中華",
+          "en": "Rich Western or Chinese cuisine"
         },
-        "scores": { "fruity": 3, "sweet": 2 }
+        "subText": {
+          "ja": "こってり系・濃厚系の料理に負けない存在感がほしい",
+          "en": "A sake that can stand up to heavier, more robust dishes"
+        },
+        "scores": {
+          "rich": 3,
+          "heavy": 2
+        }
       },
       {
         "id": "c",
         "text": {
-          "ja": "コーヒー（少し苦味のある深い味が好き）",
-          "en": "Coffee (enjoy rich and slightly bitter taste)"
+          "ja": "軽めの前菜やおつまみ",
+          "en": "Light appetizers or snacks"
         },
-        "scores": { "rich": 3, "bitter": 2 }
+        "subText": {
+          "ja": "サラダやチーズ、枝豆など、気軽につまみながら飲みたい",
+          "en": "Salads, cheese, or simple finger foods to munch on casually"
+        },
+        "scores": {
+          "light": 2,
+          "easyDrink": 3
+        }
       }
     ]
   },
   {
     "id": 4,
     "question": {
-      "ja": "どんな香りが好きですか？",
-      "en": "What kind of aroma do you like?"
+      "ja": "香りの好みはどれに近いですか？",
+      "en": "Which type of aroma do you usually prefer?"
     },
     "options": [
       {
         "id": "a",
         "text": {
-          "ja": "フルーツの香り（リンゴやメロンなど）",
-          "en": "Fruity aroma (like apples or melons)"
+          "ja": "華やかな果実の香り（リンゴ・メロンなど）",
+          "en": "Bright, fruity aromas (like apples or melons)"
         },
-        "scores": { "fruity": 3, "aromatic": 2 }
+        "subText": {
+          "ja": "リンゴやメロンを思わせるフルーティーさを感じたい",
+          "en": "Apple, melon, or other fruit-like fragrance"
+        },
+        "scores": {
+          "fruity": 3,
+          "aromatic": 2
+        }
       },
       {
         "id": "b",
         "text": {
-          "ja": "お米の香り（少し香ばしい感じ）",
-          "en": "Rice aroma (slightly roasted scent)"
+          "ja": "お米の甘みや熟成感を感じる香り",
+          "en": "Rice-driven, slightly matured aroma"
         },
-        "scores": { "mellow": 2, "rich": 3 }
+        "subText": {
+          "ja": "酒蔵を思い起こす、しっかりとした薫り高さが魅力",
+          "en": "Evokes a traditional sake brewery’s atmosphere"
+        },
+        "scores": {
+          "umami": 2,
+          "rich": 3
+        }
       },
       {
         "id": "c",
         "text": {
-          "ja": "控えめな香り（あまり主張しない）",
-          "en": "Subtle aroma (not too strong)"
+          "ja": "控えめで主張しすぎない香り",
+          "en": "Subtle aroma that fades quickly"
         },
-        "scores": { "light": 3, "balanced": 2 }
+        "subText": {
+          "ja": "あまり香りが強くなく、料理の邪魔をしない",
+          "en": "Doesn’t overpower the food, just a gentle whiff"
+        },
+        "scores": {
+          "light": 3,
+          "mellow": 2
+        }
       }
     ]
   },
   {
     "id": 5,
     "question": {
-      "ja": "一緒に楽しみたい料理を教えてください",
-      "en": "What kind of food would you like to enjoy with sake?"
+      "ja": "飲むペースやアルコール度数の好みは？",
+      "en": "How do you like to pace your drinking and alcohol strength?"
     },
     "options": [
       {
         "id": "a",
         "text": {
-          "ja": "刺身や寿司（和食全般）",
-          "en": "Sashimi or sushi (traditional Japanese food)"
+          "ja": "ゆっくり味わいたい（やや度数高めでもOK）",
+          "en": "Slow and savoring (Higher ABV is fine)"
         },
-        "scores": { "umami": 3, "balanced": 2 }
+        "subText": {
+          "ja": "落ち着いたペースで、じっくりと香りやコクを堪能したい",
+          "en": "Enjoy taking your time, appreciating the aroma and depth"
+        },
+        "scores": {
+          "premium": 3,
+          "mellow": 2
+        }
       },
       {
         "id": "b",
         "text": {
-          "ja": "ピザやパスタ（洋食）",
-          "en": "Pizza or pasta (Western cuisine)"
+          "ja": "ほどほどの度数でバランス重視",
+          "en": "Moderate strength with a balanced feel"
         },
-        "scores": { "fruity": 3, "light": 2 }
+        "subText": {
+          "ja": "食事と一緒に適度に酔える、バランスの良いお酒がいい",
+          "en": "A balanced drink that’s good with meals and won’t overwhelm"
+        },
+        "scores": {
+          "balanced": 3,
+          "easyDrink": 2
+        }
       },
       {
         "id": "c",
         "text": {
-          "ja": "餃子や麻婆豆腐（中華料理）",
-          "en": "Gyoza or mapo tofu (Chinese cuisine)"
+          "ja": "軽めがうれしい（酔いすぎず楽しみたい）",
+          "en": "Prefer lighter (Don’t want to get too drunk)"
         },
-        "scores": { "rich": 3, "heavy": 2 }
+        "subText": {
+          "ja": "アルコール度数は低めで、ゴクゴク飲んでも負担が少ない",
+          "en": "Something I can sip easily without getting too intoxicated"
+        },
+        "scores": {
+          "light": 3,
+          "refreshing": 2
+        }
       }
     ]
   }
