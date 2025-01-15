@@ -12,10 +12,38 @@ const ENDPOINTS = {
 
 // カテゴリの重み付け
 const categoryWeights = {
-  daiginjo: { premium: 1.0, fruity: 0.8, light: 0.6 },
-  junmaiGinjo: { balanced: 1.0, aromatic: 0.8, mellow: 0.6 },
-  tokubetsuJunmai: { umami: 1.0, rich: 0.8, heavy: 0.6 },
-  futsushu: { easyDrink: 1.0, refreshing: 0.8, light: 0.6 },
+  daiginjo: {
+    fruity: 1.0,
+    aromatic: 0.8,
+    light: 0.4,
+    balanced: 0.2,
+    dry: 0.0,
+    heavy: 0.0,
+  },
+  junmaiGinjo: {
+    balanced: 1.0,
+    aromatic: 0.6,
+    fruity: 0.4,
+    light: 0.3,
+    dry: 0.2,
+    heavy: 0.0,
+  },
+  tokubetsuJunmai: {
+    heavy: 1.0,
+    balanced: 0.4,
+    aromatic: 0.2,
+    dry: 0.2,
+    fruity: 0.0,
+    light: 0.0,
+  },
+  futsushu: {
+    dry: 1.0,
+    light: 0.8,
+    balanced: 0.5,
+    fruity: 0.0,
+    aromatic: 0.0,
+    heavy: 0.0,
+  },
 };
 
 // フレーバーとカテゴリのマッピング
