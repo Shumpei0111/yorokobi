@@ -2,6 +2,9 @@ import { useTranslation } from "@/app/i18n/client";
 import { Category } from "./types/questions";
 import { match } from "ts-pattern";
 import { Language } from "@/app/i18n/settings";
+import { affiliate } from "@/app/data/affiliate";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const ScoreTable = ({
   label,
@@ -33,33 +36,48 @@ export const ScoreTable = ({
     .exhaustive();
 
   return (
-    <div className="border-b border-gray-200 py-2 px-5">
-      <div className="grid grid-cols-[80px_70px_1fr] items-center">
-        <p className="font-bold">{label}</p>
-        <div className="w-[70px] h-[1px] bg-black" />
+    <div className="border-b border-gray-200 py-4 px-4">
+      <div className="flex gap-x-4 justify-between items-center w-full">
+        <p className="font-bold text-lg leading-5 flex-shrink-0">{label}</p>
+        <div className="w-full flex-shrink-1 h-[1px] bg-black" />
         <p
-          className={`font-jost font-bold text-right flex items-center justify-end ${
+          className={`font-jost font-bold text-right flex items-center justify-end flex-shrink-0 ${
             isHighestScore ? "text-primary" : ""
           }`}
         >
           {isHighestScore && (
-            <span className="text-[10px] border border-primary rounded-full px-2 mx-2 bg-slate-50">
+            <span className="text-[10px] border border-primary rounded-full px-2 mr-2 bg-slate-50">
               {t("taste-diagnosis:あなたにおすすめ")}
             </span>
           )}
           {score}
         </p>
       </div>
-      <div className="py-2">
-        <p className="text-xs font-sans text-gray-700 leading-5 font-bold">
+      <div className="py-4">
+        <div className="flex flex-col gap-y-1 items-center justify-center">
+          <div
+            dangerouslySetInnerHTML={{ __html: affiliate[type].imageWithHtml }}
+            style={{
+              border: "1px solid #cecece",
+              backgroundColor: "#fff",
+            }}
+          />
+          <Link href={affiliate[type].buttonLink} target="_blank">
+            <Button className="px-10" size="sm">
+              {t("taste-diagnosis:購入する")}
+            </Button>
+          </Link>
+        </div>
+        <p className="text-xs font-sans text-gray-700 leading-5 font-bold pt-4">
+          <span className="text-base">🍲</span>{" "}
           {t("sake-category:相性の良い料理:ラベル")}
         </p>
         <p className="text-xs font-sans text-gray-700 leading-5">
           {recommendedDishes}
         </p>
       </div>
-      <p className="text-xs py-2 font-sans text-gray-700 leading-5">
-        {description}
+      <p className="text-xs font-sans text-gray-700 leading-5">
+        <span className="text-base">🍶</span> {description}
       </p>
     </div>
   );

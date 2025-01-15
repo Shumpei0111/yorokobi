@@ -13,5 +13,6 @@
     "普通酒": "【🍶Sake Diagnosis Result】%NEWLINE%My sake type is 'Futsushu'!%NEWLINE%It's easy to enjoy and seems to be perfect for daily evening drinks.%NEWLINE%It might become a staple one from now on!"
   },
   "hashtags": "SakeDiagnosis,Yorokobi,Sake,JapaneseSake,{{scoreType}}",
-  "前の質問にもどる": "Back to Previous Question"
+  "前の質問にもどる": "Back to Previous Question",
+  "購入する": "Buy Now"
 }
