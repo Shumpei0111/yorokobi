@@ -106,7 +106,11 @@ export const DiagnosisResult = ({
           </div>
         </motion.div>
         <div className="flex justify-center my-10">
-          <Button variant="outline" onClick={() => window.location.reload()}>
+          <Button
+            variant="outline"
+            onClick={() => window.location.reload()}
+            className="bg-[rgba(0,43,92,0.8)] hover:bg-[rgba(0,43,92,1)] duration-300 text-white py-2 px-10 rounded shadow font-jost border border-primary font-bold"
+          >
             {t("taste-diagnosis:診断をやり直す")}
           </Button>
         </div>
