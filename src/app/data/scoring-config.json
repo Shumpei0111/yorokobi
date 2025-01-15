@@ -1,31 +1,35 @@
 {
   "questionWeights": {
-    "mood": 0.4,
-    "impression": 0.3,
-    "beverage": 0.15,
-    "aroma": 0.1,
-    "food": 0.05
+    "mood": 0.25,
+    "impression": 0.25,
+    "beverage": 0.2,
+    "aroma": 0.15,
+    "food": 0.15
   },
   "categoryWeights": {
     "daiginjo": {
       "premium": 1.0,
       "fruity": 0.8,
-      "light": 0.6
+      "light": 0.4
     },
     "junmaiGinjo": {
       "balanced": 1.0,
       "aromatic": 0.8,
-      "mellow": 0.6
+      "mellow": 0.6,
+      "premium": 0.3
     },
     "tokubetsuJunmai": {
       "umami": 1.0,
       "rich": 0.8,
-      "heavy": 0.6
+      "heavy": 0.6,
+      "premium": 0.2
     },
     "futsushu": {
       "easyDrink": 1.0,
       "refreshing": 0.8,
-      "light": 0.6
+      "light": 0.7,
+      "sweet": 0.4,
+      "bitter": 0.3
     }
   },
   "calculation": {
