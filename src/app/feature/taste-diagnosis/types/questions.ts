@@ -32,10 +32,10 @@ export type Weights = Pick<
 
 export type UserAnswer = Record<string, number | undefined>;
 
-export type ScoreKeys =
+export type Category =
   | "daiginjo"
   | "junmaiGinjo"
   | "tokubetsuJunmai"
   | "futsushu";
 
-export type Scores = Record<ScoreKeys, number>;
+export type Scores = Record<Category, number>;

@@ -1,5 +1,5 @@
 import { useTranslation } from "@/app/i18n/client";
-import { ScoreKeys } from "./types/questions";
+import { Category } from "./types/questions";
 import { match } from "ts-pattern";
 import { Language } from "@/app/i18n/settings";
 
@@ -12,7 +12,7 @@ export const ScoreTable = ({
 }: {
   label: string;
   score: number;
-  type: ScoreKeys;
+  type: Category;
   lang: Language;
   isHighestScore: boolean;
 }) => {

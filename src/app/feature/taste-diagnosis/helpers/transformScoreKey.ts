@@ -1,8 +1,8 @@
-import { ScoreKeys } from "../types/questions";
+import { Category } from "../types/questions";
 import { TFunction } from "i18next";
 
 export const transformScoreKey = (
-  key: ScoreKeys,
+  key: Category,
   t: TFunction<"translation", undefined>
 ) => {
   switch (key) {

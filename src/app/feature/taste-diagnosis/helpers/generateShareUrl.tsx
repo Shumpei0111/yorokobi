@@ -1,8 +1,8 @@
 import { TFunction } from "i18next";
 import { transformScoreKey } from "./transformScoreKey";
-import { ScoreKeys } from "../types/questions";
+import { Category } from "../types/questions";
 
-export const generateShareUrl = (scoreType: ScoreKeys, t: TFunction) => {
+export const generateShareUrl = (scoreType: Category, t: TFunction) => {
   const translatedScoreType = transformScoreKey(scoreType, t);
 
   const shareText = t("taste-diagnosis:shareText", {

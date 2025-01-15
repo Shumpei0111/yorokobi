@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { ScoreKeys, Scores } from "./types/questions";
+import { Category, Scores } from "./types/questions";
 import { useTranslation } from "@/app/i18n/client";
 import { type Language } from "@/app/i18n/settings";
 import { RadarChart } from "./radar-chart";
@@ -31,7 +31,7 @@ export const DiagnosisResult = ({
   const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
 
   const { xShareUrl, lineShareUrl } = generateShareUrl(
-    highestScoreType as ScoreKeys,
+    highestScoreType as Category,
     t
   );
 
@@ -66,7 +66,7 @@ export const DiagnosisResult = ({
                 strong: <strong />,
               }}
               values={{
-                type: transformScoreKey(highestScoreType as ScoreKeys, t),
+                type: transformScoreKey(highestScoreType as Category, t),
               }}
             />
             <div className="flex justify-center gap-4 text-xs my-4">
@@ -96,9 +96,9 @@ export const DiagnosisResult = ({
             {sortedScores.map(([type, score]) => (
               <ScoreTable
                 key={type}
-                type={type as ScoreKeys}
+                type={type as Category}
                 lang={lang}
-                label={transformScoreKey(type as ScoreKeys, t)}
+                label={transformScoreKey(type as Category, t)}
                 score={score}
                 isHighestScore={highestScoreType === type}
               />

@@ -1,5 +1,5 @@
 /** レコメンドなどで使う酒データ */
-export interface SakeData {
+export interface Brand {
   /** 銘柄ID */
   brandId: number;
   /** 銘柄名 */
