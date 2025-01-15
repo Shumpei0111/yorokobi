@@ -8,7 +8,7 @@ import { QuestionCards } from "./question-cards";
 import { DiagnosisResult } from "./diagnosis-result";
 
 export const QuestionSlider = ({ lang }: { lang: Language }) => {
-  const { currentIndex, handleAnswer, scores, done } = useAnswers(
+  const { currentIndex, handleAnswer, handleBack, scores, done } = useAnswers(
     questions as unknown as Question[]
   );
 
@@ -20,6 +20,7 @@ export const QuestionSlider = ({ lang }: { lang: Language }) => {
           currentIndex={currentIndex}
           lang={lang}
           handleAnswer={handleAnswer}
+          handleBack={handleBack}
         />
       )}
       {done && <DiagnosisResult scores={scores} lang={lang} />}

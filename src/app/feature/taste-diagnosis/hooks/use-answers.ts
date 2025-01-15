@@ -39,6 +39,11 @@ export const useAnswers = (questions: Question[]) => {
     setDone(true);
   };
 
+  const handleBack = () => {
+    setCurrentIndex(currentIndex - 1);
+    setProgress(progress - 1);
+  };
+
   return {
     currentIndex,
     answers,
@@ -46,5 +51,6 @@ export const useAnswers = (questions: Question[]) => {
     done,
     scores,
     handleAnswer,
+    handleBack,
   };
 };

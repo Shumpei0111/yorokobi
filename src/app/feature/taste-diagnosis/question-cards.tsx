@@ -1,7 +1,12 @@
+"use client";
+
 import { AnimatePresence, motion } from "motion/react";
 import { Question, UserAnswer } from "./types/questions";
 import { type Language } from "@/app/i18n/settings";
 import { tv } from "tailwind-variants";
+import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 /** 質問カード */
 export const QuestionCards = ({
@@ -9,12 +14,16 @@ export const QuestionCards = ({
   currentIndex,
   lang,
   handleAnswer,
+  handleBack,
 }: {
   questions: Question[];
   currentIndex: number;
   lang: Language;
   handleAnswer: (answer: UserAnswer) => void;
+  handleBack: () => void;
 }) => {
+  const { t } = useTranslation(lang);
+
   const mainButtonVariant = tv({
     base: "bg-[rgba(0,43,92,0.8)] hover:bg-[rgba(0,43,92,1)] duration-300 text-white py-2 px-4 rounded shadow font-jost border border-primary font-bold",
     variants: {
@@ -41,10 +50,11 @@ export const QuestionCards = ({
   return (
     <AnimatePresence>
       <div className="min-h-screen">
-        <nav className="flex justify-center items-center gap-4 py-2 px-4">
+        <nav className="flex flex-col justify-center items-center gap-4 py-2 px-4">
           <span className="text-sm font-montserrat">
-            {currentIndex + 1} — {questions.length}
+            Q.{currentIndex + 1} — {questions.length}
           </span>
+          <Progress value={currentIndex * 25} max={questions.length} />
         </nav>
         <motion.div
           key={currentIndex}
@@ -72,6 +82,17 @@ export const QuestionCards = ({
                 </span>
               </button>
             ))}
+          </div>
+          <div className="py-4 grid grid-cols-2 w-full">
+            <Button
+              variant="outline"
+              onClick={handleBack}
+              className="font-montserrat text-xs"
+              disabled={currentIndex === 0}
+            >
+              {t("taste-diagnosis:前の質問にもどる")}
+            </Button>
+            <div></div>
           </div>
         </motion.div>
       </div>
