@@ -1,8 +1,8 @@
 {
-  "ヒーロー": {
-    "1行目": "Discover the deeper, richer world of sake.",
-    "2行目": "Find the perfect cup for you."
-  },
+  "はい": "Yes",
+  "いいえ": "No",
   "LINEで共有": "Share on LINE",
-  "Xで共有": "Share on X"
+  "Xで共有": "Share on X",
+  "年齢確認": "Age Confirmation",
+  "あなたの国でアルコールを飲むことを認められた年齢ですか？": "Are you of legal drinking age in your country?"
 }
