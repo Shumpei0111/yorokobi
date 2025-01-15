@@ -26,7 +26,7 @@ export const FirstCheckDialog = ({ lang }: { lang: Language }) => {
 
   return (
     <Dialog open={open} defaultOpen={open}>
-      <DialogContent>
+      <DialogContent className="[&>button]:hidden">
         <DialogHeader className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <DialogTitle>言語/Language</DialogTitle>
