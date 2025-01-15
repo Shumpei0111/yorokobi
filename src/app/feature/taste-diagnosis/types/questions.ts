@@ -13,6 +13,10 @@ export interface Option {
     ja: string;
     en: string;
   };
+  subText: {
+    ja: string;
+    en: string;
+  };
   scores: Record<string, number>;
 }
 
