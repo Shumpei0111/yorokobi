@@ -37,7 +37,7 @@ export const ScoreTable = ({
     .exhaustive();
 
   return (
-    <div className="border-b border-gray-200 py-4 px-4">
+    <div className="border-b border-gray-200 py-10 px-4">
       <div className="flex gap-x-4 justify-between items-center w-full">
         <p className="font-bold text-lg leading-5 flex-shrink-0">{label}</p>
         <div className="w-full flex-shrink-1 h-[1px] bg-black" />

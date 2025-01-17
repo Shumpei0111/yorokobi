@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        manrope: ["var(--font-manrope)", "sans-serif"],
         hannariMincho: ["var(--font-hannari-mincho)", "sans-serif"],
         jost: ["var(--font-jost)", "sans-serif"],
       },

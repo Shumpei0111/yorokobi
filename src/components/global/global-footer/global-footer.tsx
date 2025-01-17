@@ -24,7 +24,7 @@ export const GlobalFooter = ({ lang }: { lang: Language }) => {
         </div>
       </div>
       <div className="py-20 flex flex-col items-center gap-5">
-        <h1 className="text-5xl font-bold font-montserrat text-primary">
+        <h1 className="text-5xl font-[800] font-sans text-primary">
           <Link href={`/${lang}`}>Yorokobi</Link>
         </h1>
         <div className="flex flex-col items-center gap-2">

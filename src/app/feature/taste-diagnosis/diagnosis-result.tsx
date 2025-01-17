@@ -52,7 +52,7 @@ export const DiagnosisResult = ({
           transition={{ duration: 0.2 }}
         >
           <div className="max-w-[600px] mx-auto mt-10">
-            <h2 className="text-center text-xl font-bold">
+            <h2 className="text-center text-xl font-[800]">
               {t("taste-diagnosis:あなたにおすすめの日本酒は")}
             </h2>
             <div className="flex justify-center flex-col gap-2 py-4 -mb-6">
@@ -62,7 +62,7 @@ export const DiagnosisResult = ({
                 <rt className="text-sm pb-1">{scoreRuby}</rt>
                 <rp>)</rp>
               </ruby>
-              <p className="text-center text-sm">{oneSentence}</p>
+              <p className="text-center text-sm font-[500]">{oneSentence}</p>
             </div>
             <div className="min-h-[340px]">
               <RadarChart scores={scores} lang={lang} />

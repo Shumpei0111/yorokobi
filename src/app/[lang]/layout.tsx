@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Jost } from "next/font/google";
+import { Jost, Manrope } from "next/font/google";
 import localFont from "next/font/local";
 import { dir } from "i18next";
 import { GlobalHeader } from "@/components/global/global-header/global-header";
@@ -9,8 +9,8 @@ import { GlobalFooter } from "@/components/global/global-footer/global-footer";
 import { Brightness } from "@/components/global/brightness/brightness";
 import { FirstCheckDialog } from "@/components/global/first-check-dialog";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -41,10 +41,10 @@ export default async function RootLayout({
   return (
     <html lang={lang} dir={dir(lang)}>
       <body
-        className={`${montserrat.variable} ${hannariMincho.variable} ${
-          jost.variable
+        className={`${hannariMincho.variable} ${jost.variable} ${
+          manrope.variable
         } ${
-          lang === "ja" ? "font-sans" : "font-jost"
+          lang === "ja" ? "font-sans" : "font-manrope"
         } antialiased overflow-x-hidden flex flex-col min-h-screen relative bg-[#EDEDED]`}
       >
         <GlobalHeader lang={lang} />
