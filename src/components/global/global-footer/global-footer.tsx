@@ -12,7 +12,7 @@ export const GlobalFooter = ({ lang }: { lang: Language }) => {
 
   return (
     <footer className="mx-auto w-full font-sans px-2 bg-slate-800">
-      <div className="h-[20px] w-screen relative overflow-hidden">
+      <div className="h-[20px] relative overflow-hidden">
         <div className="absolute inset-0 opacity-50">
           <Image
             src={seigaiha.src}
