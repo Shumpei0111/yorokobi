@@ -22,7 +22,7 @@ export default async function Home({
         <div className="pt-10 md:pt-16">
           <Link
             href={`/${lang}/taste-diagnosis`}
-            className="bg-primary border-secondary border text-black hover:brightness-75 transition duration-300  px-10 py-2 rounded-full hover:bg-primary/80 drop-shadow-md"
+            className="bg-primary border-secondary border font-hannariMincho -mt-2 block text-black hover:brightness-75 transition duration-300  px-10 py-2 rounded-full hover:bg-primary/80 drop-shadow-md"
           >
             {t("home:味覚診断を始める")}
           </Link>
@@ -33,7 +33,7 @@ export default async function Home({
         <h2 className="text-4xl font-sans font-bold text-center tracking-tighter">
           Why Sake is Cool?
         </h2>
-        <WhySakeCool lang={lang} />
+        <WhySakeCool />
       </section>
     </div>
   );

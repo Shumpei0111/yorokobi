@@ -44,7 +44,7 @@ export default async function RootLayout({
         className={`${montserrat.variable} ${hannariMincho.variable} ${
           jost.variable
         } ${
-          lang === "ja" ? "font-hannariMincho" : "font-jost"
+          lang === "ja" ? "font-sans" : "font-jost"
         } antialiased overflow-x-hidden flex flex-col min-h-screen relative bg-[#EDEDED]`}
       >
         <GlobalHeader lang={lang} />
