@@ -12,7 +12,7 @@ export default async function Home({
   const { t } = await getTranslation(lang);
   return (
     <div className="px-4 py-20 w-full h-full flex flex-col md:gap-36 gap-16 justify-center items-center">
-      <section className="flex flex-col items-center">
+      <section className="flex flex-col items-center min-h-[calc(100vh-700px)]">
         <strong className="text-3xl md:text-5xl block font-hannariMincho text-center">
           {t("home:ヒーロー:1行目")}
           <span className="text-base md:text-2xl block font-sans mt-2">
@@ -33,7 +33,7 @@ export default async function Home({
         <h2 className="text-4xl font-sans font-bold text-center tracking-tighter">
           Why Sake is Cool?
         </h2>
-        <WhySakeCool />
+        <WhySakeCool lang={lang} />
       </section>
     </div>
   );
