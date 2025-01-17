@@ -7,6 +7,7 @@ import { tv } from "tailwind-variants";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
+import { ChevronsLeft } from "lucide-react";
 
 /** 質問カード */
 export const QuestionCards = ({
@@ -87,9 +88,10 @@ export const QuestionCards = ({
             <Button
               variant="outline"
               onClick={handleBack}
-              className="font-montserrat text-xs"
+              className="font-montserrat text-xs gap-1"
               disabled={currentIndex === 0}
             >
+              <ChevronsLeft />
               {t("taste-diagnosis:前の質問にもどる")}
             </Button>
             <div></div>

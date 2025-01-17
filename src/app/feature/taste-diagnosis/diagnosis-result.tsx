@@ -8,7 +8,7 @@ import { ScoreTable } from "./score-table";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { generateShareUrl } from "./helpers/generateShareUrl";
-import { Share2 } from "lucide-react";
+import { RotateCcw, Share2 } from "lucide-react";
 import XLogo from "/public/images/logo-x.svg";
 import Image from "next/image";
 
@@ -36,10 +36,11 @@ export const DiagnosisResult = ({
     t
   );
 
-  const { label: scoreLabel, ruby: scoreRuby } = transformScoreKey(
-    highestScoreType as Category,
-    t
-  );
+  const {
+    label: scoreLabel,
+    ruby: scoreRuby,
+    oneSentence,
+  } = transformScoreKey(highestScoreType as Category, t);
 
   return (
     <AnimatePresence>
@@ -54,13 +55,14 @@ export const DiagnosisResult = ({
             <h2 className="text-center text-xl font-bold">
               {t("taste-diagnosis:あなたにおすすめの日本酒は")}
             </h2>
-            <div className="flex justify-center py-4 -mb-6">
+            <div className="flex justify-center flex-col gap-2 py-4 -mb-6">
               <ruby className="text-center text-3xl font-bold text-primary font-hannariMincho drop-shadow-md">
                 {scoreLabel}
                 <rp>(</rp>
                 <rt className="text-sm pb-1">{scoreRuby}</rt>
                 <rp>)</rp>
               </ruby>
+              <p className="text-center text-sm">{oneSentence}</p>
             </div>
             <div className="min-h-[340px]">
               <RadarChart scores={scores} lang={lang} />
@@ -124,8 +126,9 @@ export const DiagnosisResult = ({
               scrollTo(0, 0);
               window.location.reload();
             }}
-            className="bg-[rgba(0,43,92,0.8)] hover:bg-[rgba(0,43,92,1)] duration-300 text-white py-2 px-10 rounded shadow font-jost border border-primary font-bold"
+            className="bg-[rgba(0,43,92,0.8)] hover:bg-[rgba(0,43,92,1)] hover:text-white duration-300 text-white py-2 px-10 rounded shadow font-jost border border-primary font-bold"
           >
+            <RotateCcw />
             {t("taste-diagnosis:診断をやり直す")}
           </Button>
         </div>
