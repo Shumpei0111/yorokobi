@@ -62,7 +62,7 @@ export const QuestionCards = ({
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -100, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute  top-[20%] flex flex-col justify-center items-center  rounded p-6"
+          className="absolute -translate-x-1/2 w-full max-w-[600px] top-[20%] flex flex-col justify-center items-center  rounded p-6"
         >
           <h3 className="text-xl font-bold mb-4">
             {questions[currentIndex].question[lang]}

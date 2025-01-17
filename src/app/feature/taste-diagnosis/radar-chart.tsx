@@ -44,8 +44,8 @@ export const RadarChart = ({
         },
       },
       xaxis: {
-        categories: Object.keys(scores).map((key) =>
-          transformScoreKey(key as keyof Scores, t)
+        categories: Object.keys(scores).map(
+          (key) => transformScoreKey(key as keyof Scores, t).label
         ),
         labels: {
           style: {

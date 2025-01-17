@@ -5,6 +5,7 @@ import { Language } from "@/app/i18n/settings";
 import { affiliate } from "@/app/data/affiliate";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getPickedUpBrands } from "./helpers/generateRecommendations";
 
 export const ScoreTable = ({
   label,
@@ -68,6 +69,20 @@ export const ScoreTable = ({
             </Button>
           </Link>
         </div>
+        <div className="pt-4">
+          <p className="text-xs font-sans text-gray-700 leading-5 font-bold pt-4">
+            <span className="text-base">🍶</span>{" "}
+            {t("taste-diagnosis:同じ種類の日本酒（ランダム）")}
+          </p>
+          <ul className="flex gap-x-1 items-center text-sm flex-wrap">
+            {getPickedUpBrands(type).map((brand, index) => (
+              <li key={brand.brandId} className="flex">
+                {brand.brandName}
+                {index < getPickedUpBrands(type).length - 1 && " / "}
+              </li>
+            ))}
+          </ul>
+        </div>
         <p className="text-xs font-sans text-gray-700 leading-5 font-bold pt-4">
           <span className="text-base">🍲</span>{" "}
           {t("sake-category:相性の良い料理:ラベル")}
@@ -77,7 +92,7 @@ export const ScoreTable = ({
         </p>
       </div>
       <p className="text-xs font-sans text-gray-700 leading-5">
-        <span className="text-base">🍶</span> {description}
+        <span className="text-base">📝</span> {description}
       </p>
     </div>
   );

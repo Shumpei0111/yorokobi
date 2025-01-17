@@ -4,6 +4,7 @@
   "診断結果": "Diagnosis Result",
   "あなたにおすすめの日本酒は": "The recommended sake for you is...",
   "あなたにおすすめ": "Recommended",
+  "同じ種類の日本酒（ランダム）": "Same type of sake (random)",
   "診断をやり直す": "Retry Diagnosis",
   "shareText": "Result: The sake we recommend for you is '{{scoreType}}'!",
   "share": {

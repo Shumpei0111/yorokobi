@@ -68,3 +68,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.apexcharts-xaxis text {
+  fill: #3e3e3e;
+}

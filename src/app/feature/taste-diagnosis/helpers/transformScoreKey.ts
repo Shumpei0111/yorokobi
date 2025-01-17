@@ -7,13 +7,25 @@ export const transformScoreKey = (
 ) => {
   switch (key) {
     case "daiginjo":
-      return t("sake-category:大吟醸");
+      return {
+        label: t("sake-category:大吟醸"),
+        ruby: t("sake-category:大吟醸ルビ"),
+      };
     case "junmaiGinjo":
-      return t("sake-category:純米吟醸");
+      return {
+        label: t("sake-category:純米吟醸"),
+        ruby: t("sake-category:純米吟醸ルビ"),
+      };
     case "tokubetsuJunmai":
-      return t("sake-category:特別純米");
+      return {
+        label: t("sake-category:特別純米"),
+        ruby: t("sake-category:特別純米ルビ"),
+      };
     case "futsushu":
-      return t("sake-category:普通酒");
+      return {
+        label: t("sake-category:普通酒"),
+        ruby: t("sake-category:普通酒ルビ"),
+      };
     default:
       return key;
   }

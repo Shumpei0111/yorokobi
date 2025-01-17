@@ -36,7 +36,7 @@ export const DiagnosisResult = ({
     t
   );
 
-  const translatedScoreType = transformScoreKey(
+  const { label: scoreLabel, ruby: scoreRuby } = transformScoreKey(
     highestScoreType as Category,
     t
   );
@@ -55,9 +55,12 @@ export const DiagnosisResult = ({
               {t("taste-diagnosis:あなたにおすすめの日本酒は")}
             </h2>
             <div className="flex justify-center py-4 -mb-6">
-              <p className="text-center text-5xl font-bold text-primary font-hannariMincho drop-shadow-md">
-                {translatedScoreType}
-              </p>
+              <ruby className="text-center text-3xl font-bold text-primary font-hannariMincho drop-shadow-md">
+                {scoreLabel}
+                <rp>(</rp>
+                <rt className="text-sm pb-1">{scoreRuby}</rt>
+                <rp>)</rp>
+              </ruby>
             </div>
             <div className="min-h-[340px]">
               <RadarChart scores={scores} lang={lang} />
@@ -69,13 +72,13 @@ export const DiagnosisResult = ({
               {isJa ? " を利用しています" : " is used."}
             </small>
           </div>
-          <div className="text-sm my-10">
+          <div className="text-sm my-10 max-w-[600px] mx-auto">
             {sortedScores.map(([type, score]) => (
               <ScoreTable
                 key={type}
                 type={type as Category}
                 lang={lang}
-                label={transformScoreKey(type as Category, t)}
+                label={transformScoreKey(type as Category, t).label}
                 score={score}
                 isHighestScore={highestScoreType === type}
               />
