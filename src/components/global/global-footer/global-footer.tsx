@@ -28,9 +28,7 @@ export const GlobalFooter = ({ lang }: { lang: Language }) => {
           <Link href={`/${lang}`}>Yorokobi</Link>
         </h1>
         <div className="flex flex-col items-center gap-2">
-          <h2 className="text-sm text-gray-400 font-serif py-1 px-2 border border-gray-400 rounded-md">
-            MENU
-          </h2>
+          <h2 className="text-xs text-gray-400 font-serif px-2">MENU</h2>
           <ul>
             <li>
               <Link

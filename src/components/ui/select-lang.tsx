@@ -11,7 +11,11 @@ import {
 import { Globe } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-export const SelectLang = () => {
+export const SelectLang = ({
+  isShowCurrentLang = true,
+}: {
+  isShowCurrentLang?: boolean;
+}) => {
   const pathname = usePathname();
 
   const currentLang = pathname.split("/")[1] || defaultLanguage;
@@ -32,13 +36,15 @@ export const SelectLang = () => {
         <Globe className="w-4 h-4" />
         <SelectValue
           placeholder={
-            <p
-              className={`${
-                currentLang === "ja" ? "font-hannariMincho" : "font-jost"
-              } text-xs`}
-            >
-              {currentLang === "ja" ? "日本語" : "English"}
-            </p>
+            isShowCurrentLang ? (
+              <p
+                className={`${
+                  currentLang === "ja" ? "font-hannariMincho" : "font-jost"
+                } text-xs`}
+              >
+                {currentLang === "ja" ? "日本語" : "EN"}
+              </p>
+            ) : null
           }
         />
       </SelectTrigger>
