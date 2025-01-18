@@ -1,0 +1,84 @@
+{
+  "タイトル": "Privacy Policy",
+  "はじめに": {
+    "タイトル": "Introduction",
+    "内容": "This application (hereinafter referred to as 'the App') respects user privacy and is committed to protecting personal information. This Privacy Policy (hereinafter referred to as 'this Policy') explains the types of information the App collects, how it is used, and how it is provided to third parties.",
+    "適用範囲": {
+      "タイトル": "Scope of Application",
+      "内容": "This Privacy Policy applies only to the App."
+    }
+  },
+  "1": {
+    "タイトル": "1. Information We Collect",
+    "1-1": {
+      "タイトル": "1-1. Anonymous Feedback",
+      "内容": "The App collects user feedback anonymously. Information provided through the feedback form (such as comments, ratings, suggestions, etc.) is collected without including information that can identify individuals."
+    },
+    "1-2": {
+      "タイトル": "1-2. Automatically Collected Information",
+      "内容": "When using the App, the following information may be automatically collected:",
+      "ユーザーのデバイス情報": "User Device Information: OS version, device type, IP address, etc.",
+      "アプリの利用状況": "App Usage Information: Frequency of use, usage of specific features, etc.",
+      "ログ": "Logs: Error information generated during app crashes, etc."
+    }
+  },
+  "2": {
+    "タイトル": "2. Use of Information",
+    "2-1": {
+      "タイトル": "2-1. Utilization of Feedback",
+      "内容": "Collected feedback is used to improve the App, develop new features, and enhance user experience. When making inquiries or commenting on articles, you may be required to enter personal information such as your name and email address. The personal information obtained will be used solely for responding to inquiries or contacting you via email with necessary information, and it will not be used for any other purposes."
+    },
+    "2-2": {
+      "タイトル": "2-2. Analysis",
+      "内容1": "The App uses Google’s access analysis tool, 'Google Analytics.' Google Analytics uses cookies to collect data. This data is collected anonymously and does not identify individuals.",
+      "内容2": "Google Analytics cookies are retained for 26 months. This feature can be disabled by disabling cookies in your browser. For more details on this agreement, please refer to the",
+      "内容3": "Google Analytics Service Terms page",
+      "内容4": "and the",
+      "内容5": "Google Policy and Terms page",
+      "内容6": "."
+    },
+    "2-3": {
+      "タイトル": "2-3. Regarding Feedback Forms and Inquiry Forms",
+      "内容": "When recording comments or inquiries, the App collects IP addresses. This is a standard feature provided for support purposes such as handling spam and abuse, and these IP addresses are not used for any other purposes."
+    }
+  },
+  "3": {
+    "タイトル": "3. Provision to Third Parties",
+    "内容1": "The App does not provide the collected information to third parties, except in the following cases:",
+    "内容2": "With user consent",
+    "内容3": "Based on legal regulations",
+    "内容4": "When necessary to protect life, body, or property",
+    "3-1": {
+      "タイトル": "3-1. Regarding Amazon Advertising Distribution",
+      "内容": "The App participates in the Amazon Associates Program, an affiliate program set up to provide a means for the site to earn referral fees by promoting and linking to Amazon.co.jp. Third parties (such as Amazon and other advertisers) may provide content and advertisements, collect information directly from visitors, and set or recognize cookies in visitors' browsers."
+    }
+  },
+  "4": {
+    "タイトル": "4. Use of Cookies",
+    "内容": "The App may use cookies to enhance user experience and for analysis purposes. Users can refuse the use of cookies by adjusting their browser settings, but some functionalities may not work correctly."
+  },
+  "5": {
+    "タイトル": "5. Security",
+    "内容": "The App takes appropriate technical and organizational measures to ensure the security of the collected information. However, we cannot guarantee complete security for data transfers and electronic storage methods on the internet."
+  },
+  "6": {
+    "タイトル": "6. Privacy of Minors",
+    "内容": "The App respects the privacy of minors. We do not collect personal information from minors. If personal information is provided by a minor, it will be promptly deleted."
+  },
+  "7": {
+    "タイトル": "7. Changes to Privacy Policy",
+    "内容": "The App complies with applicable Japanese laws regarding personal information and will appropriately review and improve the contents of this Privacy Policy as necessary. The latest revised Privacy Policy will always be disclosed on this page."
+  },
+  "8": {
+    "タイトル": "8. Disclaimer",
+    "内容1": "The App participates in affiliate programs that promote and link to products from various ASPs (Amazon, Rakuten, etc.). If you are redirected to other sites through links or banners, we bear no responsibility for the information, services, etc., provided on those destination sites. Please use the services and purchase products at your own responsibility.",
+    "内容2": "While we strive to provide accurate information in the App’s content, there may be instances of incorrect or outdated information. We do not take responsibility for any damages resulting from the content published in the App. Please understand this in advance."
+  },
+  "9": {
+    "タイトル": "9. Contact Information",
+    "内容1": "For inquiries regarding this Policy, please contact us at:",
+    "内容2": "X Account: ",
+    "内容3": "（Developer of the App）",
+    "内容4": "January 18, 2025"
+  }
+}

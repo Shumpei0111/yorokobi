@@ -48,7 +48,10 @@ export default async function RootLayout({
         } antialiased overflow-x-hidden flex flex-col min-h-screen relative bg-[#EDEDED]`}
       >
         <GlobalHeader lang={lang} />
-        <main style={{ flex: 1 }} className="relative w-full py-10">
+        <main
+          style={{ flex: 1 }}
+          className="relative w-full py-10 max-w-[1024px] mx-auto"
+        >
           {children}
         </main>
         <div className="text-[0px] text-nowrap font-[500] opacity-30">
