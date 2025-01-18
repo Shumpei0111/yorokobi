@@ -10,9 +10,17 @@ export const env = createEnv({
     /** ベーシック認証のパスワード */
     BASIC_AUTH_PASSWORD: z.string().min(1),
   },
+  client: {
+    /** SupabaseのプロジェクトURL */
+    NEXT_PUBLIC_DB_PROJECT_URL: z.string().min(1),
+    /** SupabaseのAPIキー */
+    NEXT_PUBLIC_DB_API_KEY: z.string().min(1),
+  },
   runtimeEnv: {
     ENABLE_BASIC_AUTH: process.env.ENABLE_BASIC_AUTH,
     BASIC_AUTH_USER: process.env.BASIC_AUTH_USER,
     BASIC_AUTH_PASSWORD: process.env.BASIC_AUTH_PASSWORD,
+    NEXT_PUBLIC_DB_PROJECT_URL: process.env.NEXT_PUBLIC_DB_PROJECT_URL,
+    NEXT_PUBLIC_DB_API_KEY: process.env.NEXT_PUBLIC_DB_API_KEY,
   },
 });
