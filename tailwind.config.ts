@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      animation: {
+        "text-scroll": "text-scroll 20s linear infinite",
+      },
       fontFamily: {
         manrope: ["var(--font-manrope)", "sans-serif"],
         hannariMincho: ["var(--font-hannari-mincho)", "sans-serif"],

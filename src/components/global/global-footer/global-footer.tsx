@@ -11,7 +11,7 @@ export const GlobalFooter = ({ lang }: { lang: Language }) => {
   const { t } = useTranslation(lang);
 
   return (
-    <footer className="mx-auto w-full font-sans px-2 bg-slate-800">
+    <footer className="mx-auto w-full font-sans px-2 bg-slate-800 mt-40">
       <div className="h-[20px] relative overflow-hidden">
         <div className="absolute inset-0 opacity-50">
           <Image
@@ -24,9 +24,14 @@ export const GlobalFooter = ({ lang }: { lang: Language }) => {
         </div>
       </div>
       <div className="py-20 flex flex-col items-center gap-5">
-        <h1 className="text-5xl font-[800] font-sans text-primary">
-          <Link href={`/${lang}`}>Yorokobi</Link>
-        </h1>
+        <hgroup>
+          <p className="text-white text-center text-sm">
+            Discover Your Perfect Sake.
+          </p>
+          <h1 className="text-5xl font-[800] font-sans text-primary">
+            <Link href={`/${lang}`}>Yorokobi</Link>
+          </h1>
+        </hgroup>
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-xs text-gray-400 font-serif px-2">MENU</h2>
           <ul>

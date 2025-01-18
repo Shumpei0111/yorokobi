@@ -72,3 +72,12 @@
 .apexcharts-xaxis text {
   fill: #3e3e3e;
 }
+
+@keyframes text-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

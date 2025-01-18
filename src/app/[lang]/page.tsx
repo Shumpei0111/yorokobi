@@ -28,8 +28,7 @@ export default async function Home({
           </Link>
         </div>
       </section>
-      <section></section>
-      <section className="w-auto">
+      <section className="w-auto pt-40">
         <h2 className="text-4xl font-sans font-bold text-center tracking-tighter">
           Why Sake is Cool?
         </h2>

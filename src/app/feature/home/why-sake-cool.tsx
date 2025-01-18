@@ -5,7 +5,7 @@ import { ContentBox, HeadGroupTitle } from "./parts/parts";
 
 export const WhySakeCool = () => {
   return (
-    <div className="flex flex-col gap-12 pt-8 md:pt-20 flex-start md:max-w-4xl md:w-screen">
+    <div className="flex flex-col gap-28 pt-12 md:pt-20 flex-start md:max-w-4xl md:w-screen">
       <article className="md:flex gap-2">
         <HeadGroupTitle
           count="(1)"

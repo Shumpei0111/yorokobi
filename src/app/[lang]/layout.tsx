@@ -51,6 +51,20 @@ export default async function RootLayout({
         <main style={{ flex: 1 }} className="relative w-full py-10">
           {children}
         </main>
+        <div className="text-[0px] text-nowrap font-[500] opacity-30">
+          <div
+            style={{ animationPlayState: "running" }}
+            className="font-serif animate-text-scroll inline-block text-[25rem] h-[.25em] tracking-[-0.05em]"
+          >
+            Sake.
+          </div>
+          <div
+            style={{ animationPlayState: "running" }}
+            className="font-serif animate-text-scroll inline-block text-[25rem] h-[.25em] tracking-[-0.05em]"
+          >
+            Sake.
+          </div>
+        </div>
         <GlobalFooter lang={lang} />
         <div className="fixed inset-0 top-0 left-0 w-full h-full z-[-1] opacity-30">
           <Brightness />
