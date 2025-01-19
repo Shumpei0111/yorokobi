@@ -24,7 +24,6 @@ export const useAnswers = (questions: Question[]) => {
     tokubetsuJunmai: 0,
     futsushu: 0,
   });
-  const [done, setDone] = useState<boolean>(false);
 
   const handleAnswer = (answer: UserAnswer) => {
     setAnswers([...answers, answer]);
@@ -40,7 +39,6 @@ export const useAnswers = (questions: Question[]) => {
       weights: scoringConfig as ScoringConfig,
     });
     setScores(scores);
-    setDone(true);
     router.push(`${pathname}/result`);
   };
 
@@ -53,7 +51,6 @@ export const useAnswers = (questions: Question[]) => {
     currentIndex,
     answers,
     progress,
-    done,
     scores,
     handleAnswer,
     handleBack,
