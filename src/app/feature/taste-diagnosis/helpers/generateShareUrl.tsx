@@ -20,11 +20,10 @@ export const generateShareUrl = (scoreType: Category, t: TFunction) => {
     scoreType: translatedScoreType,
   });
 
-  const xShareUrl = `https://x.com/intent/tweet?text=${encodedShareText}&url=${window.location.href}&hashtags=${hashtags}`;
-
-  const lineShareUrl = encodeURI(
-    `https://line.me/R/msg/text/?${encodedShareText}${window.location.href}`
-  );
-
-  return { xShareUrl, lineShareUrl };
+  return {
+    encodedShareText,
+    hashtags,
+    xShareText: t("common:Xで共有"),
+    lineShareText: t("common:LINEで共有"),
+  };
 };

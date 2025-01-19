@@ -22,9 +22,5 @@ export default async function TasteDiagnosisPage({
 }) {
   const { lang } = await params;
 
-  return (
-    <div>
-      <QuestionSlider lang={lang} />
-    </div>
-  );
+  return <QuestionSlider lang={lang} />;
 }
