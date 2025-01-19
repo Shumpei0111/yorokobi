@@ -39,7 +39,9 @@ export function getCookieOptions() {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite:
-      process.env.NODE_ENV === "production" ? "strict" : ("lax" as const),
+      process.env.NODE_ENV === "production"
+        ? ("strict" as const)
+        : ("lax" as const),
     path: "/",
     maxAge: TOKEN_EXPIRATION / 1000, // Convert to seconds
   };
