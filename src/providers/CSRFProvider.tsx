@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 
 interface CSRFContextType {
   csrfToken: string | null;
@@ -12,7 +18,7 @@ const CSRFContext = createContext<CSRFContextType | undefined>(undefined);
 export function CSRFProvider({ children }: { children: React.ReactNode }) {
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
 
-  const refreshCSRFToken = async () => {
+  const refreshCSRFToken = useCallback(async () => {
     try {
       const response = await fetch("/api/csrf");
       const data = await response.json();
@@ -20,11 +26,16 @@ export function CSRFProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error("Failed to fetch CSRF token:", error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     refreshCSRFToken();
-  }, []);
+
+    // Set up periodic refresh (every 1 hour)
+    const intervalId = setInterval(refreshCSRFToken, 60 * 60 * 1000);
+
+    return () => clearInterval(intervalId);
+  }, [refreshCSRFToken]);
 
   return (
     <CSRFContext.Provider value={{ csrfToken, refreshCSRFToken }}>

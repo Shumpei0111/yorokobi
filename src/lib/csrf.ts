@@ -1,21 +1,46 @@
-import { env } from "@/env.mjs";
 import { cookies } from "next/headers";
+
+const TOKEN_EXPIRATION = 60 * 60 * 1000; // 1 hour in milliseconds
 
 export function generateCSRFToken(): string {
   const token = crypto.randomUUID();
-  return token;
+  const timestamp = Date.now();
+  return `${token}.${timestamp}`;
 }
 
 export async function validateCSRFToken(token: string): Promise<boolean> {
   const storedToken = cookies().get("csrfToken")?.value;
-  return storedToken === token;
+  if (!storedToken || !token) return false;
+
+  const [storedTokenValue, storedTimestamp] = storedToken.split(".");
+  const [receivedTokenValue, receivedTimestamp] = token.split(".");
+
+  if (
+    !storedTokenValue ||
+    !storedTimestamp ||
+    !receivedTokenValue ||
+    !receivedTimestamp
+  )
+    return false;
+
+  const storedTime = parseInt(storedTimestamp, 10);
+  const receivedTime = parseInt(receivedTimestamp, 10);
+
+  if (isNaN(storedTime) || isNaN(receivedTime)) return false;
+
+  const isExpired = Date.now() - storedTime > TOKEN_EXPIRATION;
+  if (isExpired) return false;
+
+  return storedTokenValue === receivedTokenValue && storedTime === receivedTime;
 }
 
 export function getCookieOptions() {
   return {
     httpOnly: true,
-    secure: env.ENABLE_CSRF,
-    sameSite: env.ENABLE_CSRF ? ("strict" as const) : ("lax" as const),
+    secure: process.env.NODE_ENV === "production",
+    sameSite:
+      process.env.NODE_ENV === "production" ? "strict" : ("lax" as const),
     path: "/",
+    maxAge: TOKEN_EXPIRATION / 1000, // Convert to seconds
   };
 }
