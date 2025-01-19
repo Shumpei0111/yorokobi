@@ -11,6 +11,9 @@ import { calculateScores } from "../helpers/calculateScores";
 import scoringConfig from "@/app/data/scoring-config.json";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { tasteDiagnosisSchema, TasteDiagnosisSchema } from "../schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export const useAnswers = (questions: Question[]) => {
   const router = useRouter();
@@ -23,6 +26,16 @@ export const useAnswers = (questions: Question[]) => {
     junmaiGinjo: 0,
     tokubetsuJunmai: 0,
     futsushu: 0,
+  });
+
+  const method = useForm<TasteDiagnosisSchema>({
+    resolver: zodResolver(tasteDiagnosisSchema),
+    defaultValues: {
+      daiginjo: 0,
+      junmaiGinjo: 0,
+      tokubetsuJunmai: 0,
+      futsushu: 0,
+    },
   });
 
   const handleAnswer = (answer: UserAnswer) => {
@@ -39,6 +52,14 @@ export const useAnswers = (questions: Question[]) => {
       weights: scoringConfig as ScoringConfig,
     });
     setScores(scores);
+
+    for (const key in scores) {
+      method.setValue(
+        key as keyof TasteDiagnosisSchema,
+        scores[key as keyof Scores]
+      );
+    }
+
     router.push(`${pathname}/result`);
   };
 
@@ -47,12 +68,18 @@ export const useAnswers = (questions: Question[]) => {
     setProgress(progress - 1);
   };
 
+  const onSubmit = async (data: TasteDiagnosisSchema) => {
+    console.log(data);
+  };
+
   return {
+    method,
     currentIndex,
     answers,
     progress,
     scores,
     handleAnswer,
     handleBack,
+    onSubmit,
   };
 };

@@ -2,7 +2,6 @@
 
 import { type Language } from "@/app/i18n/settings";
 import { AnimatePresence, motion } from "motion/react";
-
 import { Question } from "./types/questions";
 import { tv } from "tailwind-variants";
 import { Progress } from "@/components/ui/progress";
@@ -11,12 +10,12 @@ import { useTranslation } from "react-i18next";
 import { ChevronsLeft } from "lucide-react";
 import { useAnswers } from "./hooks/use-answers";
 import questions from "@/app/data/questions.json";
+import { Form } from "@/components/ui/form";
 
 export const QuestionSlider = ({ lang }: { lang: Language }) => {
   const { t } = useTranslation(lang);
-  const { currentIndex, handleAnswer, handleBack, scores } = useAnswers(
-    questions as unknown as Question[]
-  );
+  const { method, currentIndex, handleAnswer, handleBack, onSubmit } =
+    useAnswers(questions as unknown as Question[]);
 
   const mainButtonVariant = tv({
     base: "bg-[rgba(0,43,92,0.8)] hover:bg-[rgba(0,43,92,1)] duration-300 text-white py-2 px-4 rounded shadow font-manrope border border-primary font-bold break-words",
@@ -55,46 +54,49 @@ export const QuestionSlider = ({ lang }: { lang: Language }) => {
               className="w-full"
             />
           </nav>
-          <motion.div
-            key={currentIndex}
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -100, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute -translate-x-1/2 w-full max-w-[600px] top-[20%] flex flex-col justify-center items-center  rounded p-6"
-          >
-            <h3 className="text-xl font-bold font-jost mb-4">
-              {questions[currentIndex].question[lang]}
-            </h3>
-            <div className="flex flex-col gap-4 w-full">
-              {questions[currentIndex].options.map((option, index) => (
-                <button
-                  key={index}
-                  className={mainButtonVariant({ lang })}
-                  onClick={() => {
-                    handleAnswer(option.scores);
-                  }}
-                >
-                  {option.text[lang]}
-                  <span className={subTextVariant({ lang })}>
-                    {option.subText[lang]}
-                  </span>
-                </button>
-              ))}
-            </div>
-            <div className="py-4 w-full">
-              <Button
-                variant="outline"
-                onClick={handleBack}
-                className="font-leagueSpartan text-xs gap-1"
-                disabled={currentIndex === 0}
+          <Form {...method}>
+            <form onSubmit={method.handleSubmit(onSubmit)}>
+              <motion.fieldset
+                key={currentIndex}
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -100, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute -translate-x-1/2 w-full max-w-[600px] top-[20%] flex flex-col justify-center items-center  rounded p-6"
               >
-                <ChevronsLeft />
-                {t("taste-diagnosis:前の質問にもどる")}
-              </Button>
-              <div></div>
-            </div>
-          </motion.div>
+                <h3 className="text-xl font-bold font-jost mb-4">
+                  {questions[currentIndex].question[lang]}
+                </h3>
+                <div className="flex flex-col gap-4 w-full">
+                  {questions[currentIndex].options.map((option, index) => (
+                    <button
+                      key={index}
+                      className={mainButtonVariant({ lang })}
+                      onClick={() => {
+                        handleAnswer(option.scores);
+                      }}
+                    >
+                      {option.text[lang]}
+                      <span className={subTextVariant({ lang })}>
+                        {option.subText[lang]}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <div className="py-4 w-full">
+                  <Button
+                    variant="outline"
+                    onClick={handleBack}
+                    className="font-leagueSpartan text-xs gap-1"
+                    disabled={currentIndex === 0}
+                  >
+                    <ChevronsLeft />
+                    {t("taste-diagnosis:前の質問にもどる")}
+                  </Button>
+                </div>
+              </motion.fieldset>
+            </form>
+          </Form>
         </div>
       </AnimatePresence>
     </div>
