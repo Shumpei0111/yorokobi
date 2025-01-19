@@ -27,10 +27,6 @@ import { useLogic } from "./logic";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { ControllerRenderProps } from "react-hook-form";
-import { FeedbackFormSchema } from "./schema";
-
-type CommentsField = ControllerRenderProps<FeedbackFormSchema, "comments">;
 
 export const FeedbackForm = ({
   lang,
@@ -108,7 +104,7 @@ export const FeedbackForm = ({
               <FormField
                 control={method.control}
                 name="comments"
-                render={({ field }: { field: CommentsField }) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel className="font-bold">
                       コメント記入欄 (任意)
