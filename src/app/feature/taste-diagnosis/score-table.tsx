@@ -1,27 +1,24 @@
-import { useTranslation } from "@/app/i18n/client";
 import { Category } from "./types/questions";
 import { match } from "ts-pattern";
-import { Language } from "@/app/i18n/settings";
 import { affiliate } from "@/app/data/affiliate";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { getPickedUpBrands } from "./helpers/generateRecommendations";
+import { TFunction } from "i18next";
 
-export const ScoreTable = ({
+export const ScoreTable = async ({
   label,
   score,
   type,
-  lang,
+  t,
   isHighestScore,
 }: {
   label: string;
   score: number;
   type: Category;
-  lang: Language;
+  t: TFunction;
   isHighestScore: boolean;
 }) => {
-  const { t } = useTranslation(lang);
-
   const description = match(type)
     .with("daiginjo", () => t("sake-category:大吟醸とは"))
     .with("junmaiGinjo", () => t("sake-category:純米吟醸とは"))

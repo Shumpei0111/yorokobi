@@ -1,3 +1,5 @@
+import { getDiagnosisResult } from "@/app/feature/taste-diagnosis/actions/actions";
+import { DiagnosisResult } from "@/app/feature/taste-diagnosis/diagnosis-result";
 import { getTranslation } from "@/app/i18n/server";
 import { Language } from "@/app/i18n/settings";
 import { Metadata } from "next";
@@ -20,5 +22,17 @@ export default async function ResultPage({
   params: { lang: Language };
 }) {
   const { lang } = params;
-  return <div>ResultPage</div>;
+  const result = await getDiagnosisResult();
+  if (!result) {
+    return <div>診断結果がありません</div>;
+  }
+
+  const scores = {
+    daiginjo: result.daiginjo,
+    junmaiGinjo: result.junmaiGinjo,
+    tokubetsuJunmai: result.tokubetsuJunmai,
+    futsushu: result.futsushu,
+  };
+
+  return <DiagnosisResult scores={scores} lang={lang} />;
 }

@@ -68,10 +68,6 @@ export const useAnswers = (questions: Question[]) => {
     setProgress(progress - 1);
   };
 
-  const onSubmit = async (data: TasteDiagnosisSchema) => {
-    console.log(data);
-  };
-
   return {
     method,
     currentIndex,
@@ -80,6 +76,5 @@ export const useAnswers = (questions: Question[]) => {
     scores,
     handleAnswer,
     handleBack,
-    onSubmit,
   };
 };

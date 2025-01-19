@@ -20,18 +20,23 @@ export async function validateCSRFToken(token: string): Promise<boolean> {
     !storedTimestamp ||
     !receivedTokenValue ||
     !receivedTimestamp
-  )
+  ) {
     return false;
+  }
 
   const storedTime = parseInt(storedTimestamp, 10);
   const receivedTime = parseInt(receivedTimestamp, 10);
 
-  if (isNaN(storedTime) || isNaN(receivedTime)) return false;
+  if (isNaN(storedTime) || isNaN(receivedTime)) {
+    return false;
+  }
 
   const isExpired = Date.now() - storedTime > TOKEN_EXPIRATION;
-  if (isExpired) return false;
+  if (isExpired) {
+    return false;
+  }
 
-  return storedTokenValue === receivedTokenValue && storedTime === receivedTime;
+  return storedTokenValue === receivedTokenValue;
 }
 
 export function getCookieOptions() {

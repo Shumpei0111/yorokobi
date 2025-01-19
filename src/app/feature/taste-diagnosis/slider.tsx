@@ -11,11 +11,22 @@ import { ChevronsLeft } from "lucide-react";
 import { useAnswers } from "./hooks/use-answers";
 import questions from "@/app/data/questions.json";
 import { Form } from "@/components/ui/form";
+import { TasteDiagnosisSchema } from "./schema";
+import { useCSRF } from "@/providers/CSRFProvider";
+import { submitDiagnosis } from "./actions/actions";
 
 export const QuestionSlider = ({ lang }: { lang: Language }) => {
   const { t } = useTranslation(lang);
-  const { method, currentIndex, handleAnswer, handleBack, onSubmit } =
-    useAnswers(questions as unknown as Question[]);
+  const { method, currentIndex, handleAnswer, handleBack } = useAnswers(
+    questions as unknown as Question[]
+  );
+  const { csrfToken } = useCSRF();
+
+  const onSubmit = async (data: TasteDiagnosisSchema) => {
+    if (csrfToken) {
+      await submitDiagnosis(lang, data, csrfToken);
+    }
+  };
 
   const mainButtonVariant = tv({
     base: "bg-[rgba(0,43,92,0.8)] hover:bg-[rgba(0,43,92,1)] duration-300 text-white py-2 px-4 rounded shadow font-manrope border border-primary font-bold break-words",
