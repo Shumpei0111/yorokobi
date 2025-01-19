@@ -73,7 +73,7 @@ export const FeedbackForm = ({
               <FormField
                 control={method.control}
                 name="feedback_type"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel className="font-bold">
                       アプリ全体に対する印象{" "}

@@ -9,8 +9,12 @@ import {
 } from "../types/questions";
 import { calculateScores } from "../helpers/calculateScores";
 import scoringConfig from "@/app/data/scoring-config.json";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export const useAnswers = (questions: Question[]) => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [answers, setAnswers] = useState<UserAnswer[]>([]);
   const [progress, setProgress] = useState<number>(1);
@@ -37,6 +41,7 @@ export const useAnswers = (questions: Question[]) => {
     });
     setScores(scores);
     setDone(true);
+    router.push(`${pathname}/result`);
   };
 
   const handleBack = () => {
