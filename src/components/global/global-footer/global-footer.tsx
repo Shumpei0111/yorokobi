@@ -34,13 +34,21 @@ export const GlobalFooter = ({ lang }: { lang: Language }) => {
         </hgroup>
         <div className="flex flex-col items-center gap-2">
           <h2 className="text-xs text-gray-400 font-serif px-2">MENU</h2>
-          <ul>
-            <li>
+          <ul className="flex items-center text-sm">
+            <li className="after:content-['|'] after:text-gray-400 after:px-2">
               <Link
                 href={`/${lang}/taste-diagnosis`}
-                className="text-base text-white font-hannariMincho"
+                className="text-white font-hannariMincho"
               >
                 {t("common:メニュー.味覚診断")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={`/${lang}/privacy`}
+                className="text-white font-hannariMincho"
+              >
+                {t("common:メニュー.プライバシーポリシー")}
               </Link>
             </li>
           </ul>

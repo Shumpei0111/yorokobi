@@ -56,7 +56,7 @@ export default async function RootLayout({
           >
             {children}
           </main>
-          <div className="text-[0px] text-nowrap font-[500] opacity-30">
+          <div className="text-[0px] text-nowrap font-[500] opacity-30 overflow-hidden">
             <div
               style={{ animationPlayState: "running" }}
               className="font-serif animate-text-scroll inline-block text-[25rem] h-[.25em] tracking-[-0.05em]"

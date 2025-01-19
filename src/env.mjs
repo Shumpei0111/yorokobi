@@ -12,10 +12,18 @@ export const env = createEnv({
     /** CSRFを有効にするかどうか */
     ENABLE_CSRF: z.string().transform((value) => value === "true"),
   },
+  client: {
+    /** SupabaseのプロジェクトURL */
+    NEXT_PUBLIC_DB_PROJECT_URL: z.string().min(1),
+    /** SupabaseのAPIキー */
+    NEXT_PUBLIC_DB_API_KEY: z.string().min(1),
+  },
   runtimeEnv: {
     ENABLE_BASIC_AUTH: process.env.ENABLE_BASIC_AUTH,
     BASIC_AUTH_USER: process.env.BASIC_AUTH_USER,
     BASIC_AUTH_PASSWORD: process.env.BASIC_AUTH_PASSWORD,
+    NEXT_PUBLIC_DB_PROJECT_URL: process.env.NEXT_PUBLIC_DB_PROJECT_URL,
+    NEXT_PUBLIC_DB_API_KEY: process.env.NEXT_PUBLIC_DB_API_KEY,
     ENABLE_CSRF: process.env.ENABLE_CSRF,
   },
 });

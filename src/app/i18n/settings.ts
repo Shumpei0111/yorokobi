@@ -5,6 +5,7 @@ export const namespaces = [
   "home",
   "taste-diagnosis",
   "sake-category",
+  "privacy",
 ] as const;
 
 export type Language = (typeof availableLanguages)[number];
