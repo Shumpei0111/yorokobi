@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { tasteDiagnosisSchema, TasteDiagnosisSchema } from "../schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { wait } from "@/lib/utils";
 
 export const useAnswers = (questions: Question[]) => {
   const router = useRouter();
@@ -27,6 +28,8 @@ export const useAnswers = (questions: Question[]) => {
     tokubetsuJunmai: 0,
     futsushu: 0,
   });
+  const [isLastQuestionClicked, setIsLastQuestionClicked] =
+    useState<boolean>(false);
 
   const method = useForm<TasteDiagnosisSchema>({
     resolver: zodResolver(tasteDiagnosisSchema),
@@ -38,7 +41,7 @@ export const useAnswers = (questions: Question[]) => {
     },
   });
 
-  const handleAnswer = (answer: UserAnswer) => {
+  const handleAnswer = async (answer: UserAnswer) => {
     setAnswers([...answers, answer]);
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
@@ -60,6 +63,10 @@ export const useAnswers = (questions: Question[]) => {
       );
     }
 
+    setIsLastQuestionClicked(true);
+
+    await wait(1000);
+
     router.push(`${pathname}/result`);
   };
 
@@ -76,5 +83,6 @@ export const useAnswers = (questions: Question[]) => {
     scores,
     handleAnswer,
     handleBack,
+    isLastQuestionClicked,
   };
 };
