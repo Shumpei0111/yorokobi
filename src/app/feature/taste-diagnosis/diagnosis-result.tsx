@@ -57,12 +57,6 @@ export const DiagnosisResult = async ({
             <div className="min-h-[340px]">
               <RadarChart scores={scores} lang={lang} />
             </div>
-            <small className="text-[10px] flex justify-end pr-2 text-gray-600 -mt-10">
-              <a href="https://sakenowa.com" target="_blank" rel="noopener">
-                さけのわデータ
-              </a>
-              {isJa ? " を利用しています" : " is used."}
-            </small>
           </div>
           <div className="text-sm my-10 max-w-[600px] mx-auto">
             {sortedScores.map(([type, score]) => (
@@ -82,6 +76,13 @@ export const DiagnosisResult = async ({
                 {t("sake-category:相性の良い料理:参考")}
               </span>
               <span>{t("sake-category:相性の良い料理:注意書き")}</span>
+              <span className="text-[10px] flex justify-end pr-2">
+                {t("common:お酒データは主に")}
+                <a href="https://sakenowa.com" target="_blank" rel="noopener">
+                  さけのわデータ
+                </a>
+                {t("common:を利用しています")}
+              </span>
             </div>
           </div>
           <div className="text-md my-10 text-center">
