@@ -18,7 +18,7 @@ export const useLogic = ({
       app_suggestions: "",
       comments: null,
       contact_email: null,
-      device_info: navigator.userAgent,
+      device_info: `${navigator.userAgent}@w=${window.innerWidth}/h=${window.innerHeight}`,
       diagnosis_result: diagnosisResult || "",
       feature_feedback: "",
       feature_rating: 0,
@@ -31,7 +31,7 @@ export const useLogic = ({
       user_id: "",
       agree_privacy_policy: false,
     },
-    mode: "onSubmit",
+    mode: "onChange",
     reValidateMode: "onChange",
   });
 
