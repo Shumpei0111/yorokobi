@@ -36,10 +36,17 @@ export const feedbackFormSchema = z
     suggested_corrections: z.string().nullable(),
     /** ユーザーID */
     user_id: z.string().nullable(),
+    /** プラポリの同意 */
+    agree_privacy_policy: z.boolean(),
   })
-  .refine((data) => data.feedback_type !== "", {
+  .refine((data) => data.agree_privacy_policy, {
+    message:
+      "taste-diagnosis:フィードバック.error_message.プライバシーポリシーを確認し同意してください",
+    path: ["agree_privacy_policy"],
+  })
+  .refine((data) => data.feedback_type, {
+    message: "taste-diagnosis:フィードバック.error_message.選択してください",
     path: ["feedback_type"],
-    message: "必須項目です",
   });
 
 export type FeedbackFormSchema = z.infer<typeof feedbackFormSchema>;

@@ -22,5 +22,35 @@
   "hashtags": "SakeDiagnosis,Yorokobi,Sake,JapaneseSake,{{scoreType}}",
   "前の質問にもどる": "Back to Previous Question",
   "購入する": "Buy Now",
-  "診断データがありません。ぜひこちらから診断をやり直してください。": "No diagnosis data. Please retry the diagnosis from here."
+  "診断データがありません。ぜひこちらから診断をやり直してください。": "No diagnosis data. Please retry the diagnosis from here.",
+  "フィードバック": {
+    "フィードバックを送る": "Send Feedback",
+    "ぜひあなたの感想を聞かせてください！": "Please share your feedback to make it better!",
+    "このプロダクトは成長途中です。": "This product is under development. Please share your feedback to make it better!",
+    "今回の診断結果": "Diagnosis Result",
+    "診断結果がありません": "No diagnosis result.",
+    "プライバシーポリシー": "Privacy Policy",
+    "を確認し同意します": "Please check and agree.",
+    "送信": "Send",
+    "feedback_type": {
+      "ラベル": "Are you satisfied with the diagnosis result?",
+      "診断結果に満足しました": "I am satisfied with the diagnosis result.",
+      "診断結果に不満があります": "I am not satisfied with the diagnosis result.",
+      "アプリの使い勝手が良い": "The app is easy to use.",
+      "改善してほしい点があります": "There are points for improvement.",
+      "バグがあります": "There are bugs."
+    },
+    "comments": {
+      "ラベル": "Comment",
+      "例": "Example: The diagnosis result was close to my taste!",
+      "使いやすかった": "Easy to use.",
+      "レコメンドに満足": "I am satisfied with the recommendation.",
+      "改善してほしい点あり": "There are points for improvement."
+    },
+    "error_message": {
+      "選択してください": "Please select.",
+      "コメントを記入してください": "Please enter a comment.",
+      "プライバシーポリシーを確認し同意してください": "Please check and agree to the privacy policy."
+    }
+  }
 }

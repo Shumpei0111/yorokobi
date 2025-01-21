@@ -2,10 +2,11 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { FeedbackForm } from "./form";
 import { useEffect, useState } from "react";
 import { X, Send } from "lucide-react";
 import { Language } from "@/app/i18n/settings";
+import { LightWeightForm } from "./light-weight-form";
+import { useTranslation } from "@/app/i18n/client";
 
 export const FeedbackBanner = ({
   lang,
@@ -17,6 +18,7 @@ export const FeedbackBanner = ({
   const [isShowBanner, setIsShowBanner] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [isClickCloseOnce, setIsClickCloseOnce] = useState(false);
+  const { t } = useTranslation(lang);
 
   useEffect(() => {
     const handleScroll = (): void => {
@@ -55,20 +57,22 @@ export const FeedbackBanner = ({
               <X />
             </Button>
             <p className="text-xs pt-2 text-center">
-              ぜひあなたの感想を聞かせてください！
+              {t(
+                "taste-diagnosis:フィードバック.ぜひあなたの感想を聞かせてください！"
+              )}
             </p>
             <Button
               className="border-1 bg-primary text-gray-100 font-bold w-[80%]"
               onClick={() => setShowForm(true)}
             >
               <Send />
-              フィードバックを送る
+              {t("taste-diagnosis:フィードバック.フィードバックを送る")}
             </Button>
           </motion.div>
         </AnimatePresence>
       )}
       {showForm && !isClickCloseOnce && (
-        <FeedbackForm
+        <LightWeightForm
           isOpen={showForm}
           setIsOpen={setShowForm}
           diagnosisResult={diagnosisResult}

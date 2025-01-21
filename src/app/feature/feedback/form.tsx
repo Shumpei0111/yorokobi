@@ -40,9 +40,11 @@ export const FeedbackForm = ({
   diagnosisResult: string | undefined;
 }) => {
   const { t } = useTranslation(lang);
-  const { method, predefinedResponses, onSubmit, onError } = useLogic({
-    diagnosisResult,
-  });
+  const { method, predefinedResponses, predefinedComments, onSubmit, onError } =
+    useLogic({
+      diagnosisResult,
+      t,
+    });
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -76,8 +78,7 @@ export const FeedbackForm = ({
                 render={() => (
                   <FormItem>
                     <FormLabel className="font-bold">
-                      アプリ全体に対する印象{" "}
-                      <span className="text-red-500">(必須)</span>
+                      アプリ全体に対する印象
                     </FormLabel>
                     <div className="grid md:grid-cols-2 gap-1">
                       <RadioGroup>
@@ -101,6 +102,21 @@ export const FeedbackForm = ({
                   </FormItem>
                 )}
               />
+              {/* <FormField
+                control={method.control}
+                name="comments"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-bold">
+                      コメント記入欄 (任意)
+                    </FormLabel>
+                    <FormDescription>
+                      アプリ全体に対するコメントを記入してください
+                    </FormDescription>
+                    <Textarea {...field} value={field.value || ""} />
+                  </FormItem>
+                )}
+              /> */}
               <FormField
                 control={method.control}
                 name="comments"
@@ -112,6 +128,19 @@ export const FeedbackForm = ({
                     <FormDescription>
                       アプリ全体に対するコメントを記入してください
                     </FormDescription>
+                    <div className="flex flex-wrap gap-2">
+                      {predefinedComments.map((comment, index) => (
+                        <Button
+                          key={index}
+                          size="sm"
+                          onClick={() =>
+                            method.setValue("comments", comment.value)
+                          }
+                        >
+                          {comment.label}
+                        </Button>
+                      ))}
+                    </div>
                     <Textarea {...field} value={field.value || ""} />
                   </FormItem>
                 )}
