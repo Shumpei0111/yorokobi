@@ -21,5 +21,6 @@
   },
   "hashtags": "SakeDiagnosis,Yorokobi,Sake,JapaneseSake,{{scoreType}}",
   "前の質問にもどる": "Back to Previous Question",
-  "購入する": "Buy Now"
+  "購入する": "Buy Now",
+  "診断データがありません。ぜひこちらから診断をやり直してください。": "No diagnosis data. Please retry the diagnosis from here."
 }
