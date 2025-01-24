@@ -37,11 +37,6 @@ export const feedbackFormSchema = z.object({
   suggested_corrections: z.string().nullable(),
   /** ユーザーID */
   user_id: z.string().nullable(),
-  /** プラポリの同意 */
-  agree_privacy_policy: z.boolean().refine((data) => data, {
-    message:
-      "taste-diagnosis:フィードバック.error_message.プライバシーポリシーを確認し同意してください",
-  }),
 });
 
 export type FeedbackFormSchema = z.infer<typeof feedbackFormSchema>;

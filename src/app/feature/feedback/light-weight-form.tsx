@@ -8,13 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
+import { Form, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslation } from "@/app/i18n/client";
 import { Category } from "../taste-diagnosis/types/questions";
@@ -23,10 +17,14 @@ import { Language } from "@/app/i18n/settings";
 import { useLogic } from "./logic";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import Link from "next/link";
 import { Send } from "lucide-react";
 import { FormErrorMessage } from "@/components/ui/form-error-message";
+import { useCSRF } from "@/providers/CSRFProvider";
+import { FeedbackFormSchema } from "./schema";
+import { FieldErrors } from "react-hook-form";
+import { submitFeedback } from "./actions/actions";
+import Link from "next/link";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export const LightWeightForm = ({
   lang,
@@ -37,14 +35,56 @@ export const LightWeightForm = ({
   lang: Language;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  diagnosisResult: string | undefined;
+  diagnosisResult: {
+    highestScoreType: string | undefined;
+    forFeedbackKey: string;
+  };
 }) => {
   const { t } = useTranslation(lang);
-  const { method, predefinedResponses, predefinedComments, onSubmit, onError } =
-    useLogic({
-      diagnosisResult,
-      t,
-    });
+  const {
+    method,
+    predefinedResponses,
+    predefinedComments,
+    isSubmitSuccess,
+    setIsSubmitSuccess,
+    isAgreePrivacyPolicy,
+    handleAgreePrivacyPolicy,
+  } = useLogic({
+    diagnosisResult,
+    t,
+  });
+  const { csrfToken } = useCSRF();
+
+  const onSubmit = async (data: FeedbackFormSchema) => {
+    console.log(
+      "-----------\n" + JSON.stringify(data, null, 2) + "\n-----------\n"
+    );
+
+    if (!csrfToken) {
+      alert("送信に失敗しました");
+      throw new Error("Invalid CSRF token");
+    }
+
+    const result = await submitFeedback(lang, data, csrfToken);
+    if (result.success) {
+      setIsSubmitSuccess(true);
+
+      setTimeout(() => {
+        alert(
+          "フィードバックを送信しました。貴重なご意見ありがとうございます！"
+        );
+        setIsOpen(false);
+      }, 1_000);
+    }
+  };
+
+  const onError = (errors: FieldErrors<FeedbackFormSchema>) => {
+    console.log(errors);
+    alert(
+      "フィードバックの送信に失敗しました。しばらくしてから再度お試しください。"
+    );
+    setIsSubmitSuccess(false);
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -69,7 +109,8 @@ export const LightWeightForm = ({
               <p className="font-bold text-lg">
                 {method.getValues("diagnosis_result")
                   ? transformScoreKey(
-                      method.getValues("diagnosis_result") as Category,
+                      // method.getValues("diagnosis_result") as Category,
+                      diagnosisResult.highestScoreType as Category,
                       t
                     ).label
                   : t("taste-diagnosis:フィードバック.診断結果がありません")}
@@ -127,9 +168,10 @@ export const LightWeightForm = ({
                       <Button
                         key={index}
                         size="sm"
-                        onClick={() =>
-                          method.setValue("comments", comment.value)
-                        }
+                        onClick={(e) => {
+                          e.preventDefault();
+                          method.setValue("comments", comment.value);
+                        }}
                       >
                         {comment.label}
                       </Button>
@@ -146,44 +188,35 @@ export const LightWeightForm = ({
                 </FormItem>
               )}
             />
-            <FormField
-              control={method.control}
-              name="agree_privacy_policy"
-              render={({ field }) => (
-                <FormItem className="flex flex-col items-center gap-2 justify-center">
-                  <div className="flex items-center gap-2">
-                    <FormLabel className="text-xs text-gray-600 flex items-center gap-1">
-                      <Link
-                        href={`/${lang}/privacy`}
-                        className="underline"
-                        target="_blank"
-                      >
-                        {t(
-                          "taste-diagnosis:フィードバック.プライバシーポリシー"
-                        )}
-                      </Link>
-                      {t("taste-diagnosis:フィードバック.を確認し同意します")}
-                    </FormLabel>
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                        className="!m-0"
-                      />
-                    </FormControl>
-                  </div>
-                  {method.formState.errors.agree_privacy_policy && (
-                    <FormErrorMessage>
-                      {t(
-                        "taste-diagnosis:フィードバック.error_message.プライバシーポリシーを確認し同意してください"
-                      )}
-                    </FormErrorMessage>
-                  )}
-                </FormItem>
-              )}
-            />
+            <div className="flex flex-col items-center gap-2 justify-center">
+              <div className="flex items-center gap-2">
+                <FormLabel className="text-xs text-gray-600 flex items-center gap-1">
+                  <Link
+                    href={`/${lang}/privacy`}
+                    className="underline"
+                    target="_blank"
+                  >
+                    {t("taste-diagnosis:フィードバック.プライバシーポリシー")}
+                  </Link>
+                  {t("taste-diagnosis:フィードバック.を確認し同意します")}
+                </FormLabel>
+                <Checkbox
+                  checked={isAgreePrivacyPolicy}
+                  onCheckedChange={handleAgreePrivacyPolicy}
+                  className="!m-0"
+                />
+              </div>
+            </div>
             <div className="flex justify-end">
-              <Button type="submit" className="flex items-center gap-1">
+              <Button
+                type="submit"
+                className="flex items-center gap-1"
+                disabled={
+                  !isAgreePrivacyPolicy ||
+                  method.formState.isSubmitting ||
+                  isSubmitSuccess
+                }
+              >
                 <Send className="w-4 h-4" />
                 {t("taste-diagnosis:フィードバック.送信")}
               </Button>

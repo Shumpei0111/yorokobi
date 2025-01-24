@@ -12,8 +12,11 @@ export const FeedbackBanner = ({
   lang,
   diagnosisResult,
 }: {
+  diagnosisResult: {
+    highestScoreType: string | undefined;
+    forFeedbackKey: string;
+  };
   lang: Language;
-  diagnosisResult: string | undefined;
 }) => {
   const [isShowBanner, setIsShowBanner] = useState(false);
   const [showForm, setShowForm] = useState(false);

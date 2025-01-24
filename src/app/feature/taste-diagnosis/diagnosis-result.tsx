@@ -19,7 +19,6 @@ export const DiagnosisResult = async ({
   lang: Language;
 }) => {
   const { t } = await getTranslation(lang);
-  const isJa = lang === "ja";
 
   const highestScore = Math.max(...Object.values(scores));
   const highestScoreType = Object.keys(scores).find(
@@ -33,6 +32,7 @@ export const DiagnosisResult = async ({
     label: scoreLabel,
     ruby: scoreRuby,
     oneSentence,
+    forFeedbackKey,
   } = transformScoreKey(highestScoreType as Category, t);
 
   const { encodedShareText, hashtags, xShareText, lineShareText } =
@@ -101,7 +101,13 @@ export const DiagnosisResult = async ({
           </div>
         </div>
       </AnimatePresence>
-      <FeedbackBanner lang={lang} diagnosisResult={highestScoreType} />
+      <FeedbackBanner
+        lang={lang}
+        diagnosisResult={{
+          highestScoreType,
+          forFeedbackKey,
+        }}
+      />
     </div>
   );
 };
