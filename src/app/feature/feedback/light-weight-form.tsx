@@ -22,7 +22,6 @@ import { FormErrorMessage } from "@/components/ui/form-error-message";
 import { useCSRF } from "@/providers/CSRFProvider";
 import { FeedbackFormSchema } from "./schema";
 import { FieldErrors } from "react-hook-form";
-import { submitFeedback } from "./actions/actions";
 import Link from "next/link";
 import { Checkbox } from "@/components/ui/checkbox";
 
@@ -41,6 +40,8 @@ export const LightWeightForm = ({
   };
 }) => {
   const { t } = useTranslation(lang);
+  const { csrfToken } = useCSRF();
+
   const {
     method,
     predefinedResponses,
@@ -49,34 +50,14 @@ export const LightWeightForm = ({
     setIsSubmitSuccess,
     isAgreePrivacyPolicy,
     handleAgreePrivacyPolicy,
+    onSubmit,
   } = useLogic({
     diagnosisResult,
     t,
+    lang,
+    csrfToken,
+    setIsOpen,
   });
-  const { csrfToken } = useCSRF();
-
-  const onSubmit = async (data: FeedbackFormSchema) => {
-    console.log(
-      "-----------\n" + JSON.stringify(data, null, 2) + "\n-----------\n"
-    );
-
-    if (!csrfToken) {
-      alert("送信に失敗しました");
-      throw new Error("Invalid CSRF token");
-    }
-
-    const result = await submitFeedback(lang, data, csrfToken);
-    if (result.success) {
-      setIsSubmitSuccess(true);
-
-      setTimeout(() => {
-        alert(
-          "フィードバックを送信しました。貴重なご意見ありがとうございます！"
-        );
-        setIsOpen(false);
-      }, 1_000);
-    }
-  };
 
   const onError = (errors: FieldErrors<FeedbackFormSchema>) => {
     console.log(errors);

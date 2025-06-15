@@ -37,6 +37,8 @@ export const feedbackFormSchema = z.object({
   suggested_corrections: z.string().nullable(),
   /** ユーザーID */
   user_id: z.string().nullable(),
+  /** 言語 */
+  lang: z.union([z.literal("ja"), z.literal("en")]).default("ja"),
 });
 
 export type FeedbackFormSchema = z.infer<typeof feedbackFormSchema>;
