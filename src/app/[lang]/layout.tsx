@@ -8,6 +8,7 @@ import { GlobalFooter } from "@/components/global/global-footer/global-footer";
 import { Brightness } from "@/components/global/brightness/brightness";
 import { FirstCheckDialog } from "@/components/global/first-check-dialog";
 import { CSRFProvider } from "@/providers/CSRFProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -93,6 +94,7 @@ export default async function RootLayout({
           </div>
           <FirstCheckDialog lang={lang} />
         </CSRFProvider>
+        <Analytics />
       </body>
     </html>
   );
