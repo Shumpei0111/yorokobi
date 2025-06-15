@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Jost, Manrope } from "next/font/google";
 import localFont from "next/font/local";
 import { dir } from "i18next";
@@ -25,9 +24,27 @@ const hannariMincho = localFont({
   variable: "--font-hannari-mincho",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Yorokobi - Discover Your Perfect Sake.",
   description: "Discover Your Perfect Sake.日本酒の喜びを、あなたに。",
+  images: {
+    url: "/images/ogp.png",
+    type: "image/png",
+    width: 1200,
+    height: 630,
+  },
+  twitter: {
+    type: "website",
+    card: "summary_large_image",
+    title: "Yorokobi - Discover Your Perfect Sake.",
+    description: "Discover Your Perfect Sake.日本酒の喜びを、あなたに。",
+    images: {
+      url: "/images/ogp.png",
+      type: "image/png",
+      width: 1200,
+      height: 630,
+    },
+  },
 };
 
 export default async function RootLayout({
