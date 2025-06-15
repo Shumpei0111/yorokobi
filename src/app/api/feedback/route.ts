@@ -13,22 +13,27 @@ export async function POST(req: NextRequest) {
     // ユーザーの国を取得
     const country = await fetchUserCountry();
 
-    // SupabaseにINSERT
-    const { data, error } = await supabaseClient.from("feedback").insert([
-      {
-        ...validatedData,
-        user_id: crypto.randomUUID(),
-        created_at: new Date().toISOString(),
-        location: country,
-      } satisfies Database["public"]["Tables"]["feedback"]["Insert"],
-    ]);
+    const user_id = crypto.randomUUID(); // ユーザーIDを生成
+
+    // SupabaseにINSERTしてuser_idを返す。LocalStorageに保存する。
+    const { data, error } = await supabaseClient
+      .from("feedback")
+      .insert([
+        {
+          ...validatedData,
+          user_id,
+          created_at: new Date().toISOString(),
+          location: country,
+        } satisfies Database["public"]["Tables"]["feedback"]["Insert"],
+      ])
+      .select("user_id");
 
     if (error) {
       console.error("[feedback]Supabase insert error:", error);
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, data, user_id }, { status: 200 });
   } catch (err: unknown) {
     console.error("[feedback] API Error:", err);
     if (err instanceof Error) {
