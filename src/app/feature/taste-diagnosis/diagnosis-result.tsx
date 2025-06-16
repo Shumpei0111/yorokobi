@@ -9,6 +9,7 @@ import { ShareLinks } from "./share-links";
 import { generateShareUrl } from "./helpers/generateShareUrl";
 import { RetryButton } from "./retry-button";
 import { FeedbackBanner } from "../feedback/banner";
+import { ResultFetch } from "./result-fetch";
 
 /** 診断結果 */
 export const DiagnosisResult = async ({
@@ -40,6 +41,7 @@ export const DiagnosisResult = async ({
 
   return (
     <div>
+      <ResultFetch scores={scores} />
       <AnimatePresence>
         <div className="px-4">
           <div>

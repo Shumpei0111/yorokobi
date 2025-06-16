@@ -3,6 +3,7 @@ import { supabaseClient } from "@/lib/supabaseClient";
 import { fetchUserCountry } from "@/lib/utils";
 import { Database } from "@/types/database";
 import { feedbackFormSchema } from "@/app/feature/feedback/schema";
+import { getUserId } from "@/lib/getUserId";
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,7 +14,7 @@ export async function POST(req: NextRequest) {
     // ユーザーの国を取得
     const country = await fetchUserCountry();
 
-    const user_id = crypto.randomUUID(); // ユーザーIDを生成
+    const user_id = validatedData.user_id; // ユーザーIDをリクエストペイロードから取得
 
     // SupabaseにINSERTしてuser_idを返す。LocalStorageに保存する。
     const { data, error } = await supabaseClient

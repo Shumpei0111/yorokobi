@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { TFunction } from "i18next";
 import { Language } from "@/app/i18n/settings";
+import { GET_USER_ID_KEY, getUserId } from "@/lib/getUserId";
 
 export const useLogic = ({
   diagnosisResult,
@@ -47,7 +48,7 @@ export const useLogic = ({
       other2: null,
       other3: null,
       suggested_corrections: null,
-      user_id: localStorage.getItem("feedback_user_id") || null,
+      user_id: getUserId(),
       lang, // Default language
     },
   });
@@ -128,7 +129,9 @@ export const useLogic = ({
       setIsSubmitSuccess(true);
 
       const userId = result.data[0].user_id;
-      localStorage.setItem("feedback_user_id", userId);
+      if (!localStorage.getItem(GET_USER_ID_KEY)) {
+        localStorage.setItem(GET_USER_ID_KEY, userId);
+      }
       setTimeout(() => {
         alert(
           "フィードバックを送信しました。貴重なご意見ありがとうございます！"
