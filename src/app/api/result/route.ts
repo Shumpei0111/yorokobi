@@ -4,19 +4,17 @@ import { supabaseClient } from "@/lib/supabaseClient";
 export async function POST(req: NextRequest) {
   try {
     const requestData = await req.json();
-    console.log("🍎", { requestData });
 
-    const { data, error } = await supabaseClient
-      .from("diagnosis_results")
-      .insert([
-        {
-          result: requestData.result,
-          user_id: requestData.user_id,
-        },
-      ])
-      .select();
+    const { error } = await supabaseClient.from("diagnosis_results").insert([
+      {
+        result: requestData.result,
+        user_id: requestData.user_id,
+      },
+    ]);
 
-    console.log("🍎🍎🍎", { data, error });
+    if (error) {
+      console.error("[result] Supabase insert error:", error);
+    }
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err: unknown) {
