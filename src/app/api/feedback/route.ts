@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     // ユーザーの国を取得
     const country = await fetchUserCountry();
 
-    const user_id = getUserId(); // ユーザーIDを生成
+    const user_id = validatedData.user_id; // ユーザーIDをリクエストペイロードから取得
 
     // SupabaseにINSERTしてuser_idを返す。LocalStorageに保存する。
     const { data, error } = await supabaseClient
