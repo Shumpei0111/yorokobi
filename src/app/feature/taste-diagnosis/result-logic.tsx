@@ -16,6 +16,7 @@ export const useResultLogic = ({
   useEffect(() => {
     if (!csrfToken) {
       console.error("Invalid CSRF token");
+      return;
     }
 
     const postResult = async () => {
