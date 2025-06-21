@@ -7,7 +7,6 @@ import "./globals.css";
 import { GlobalFooter } from "@/components/global/global-footer/global-footer";
 import { Brightness } from "@/components/global/brightness/brightness";
 import { FirstCheckDialog } from "@/components/global/first-check-dialog";
-import { CSRFProvider } from "@/providers/CSRFProvider";
 import { Analytics } from "@vercel/analytics/next";
 
 const manrope = Manrope({
@@ -66,34 +65,32 @@ export default async function RootLayout({
           lang === "ja" ? "font-sans" : "font-manrope"
         } antialiased overflow-x-hidden flex flex-col min-h-screen relative bg-[#EDEDED]`}
       >
-        <CSRFProvider>
-          <GlobalHeader lang={lang} />
-          <main
-            style={{ flex: 1 }}
-            className="relative w-full py-10 max-w-[1024px] mx-auto"
+        <GlobalHeader lang={lang} />
+        <main
+          style={{ flex: 1 }}
+          className="relative w-full py-10 max-w-[1024px] mx-auto"
+        >
+          {children}
+        </main>
+        <div className="text-[0px] text-nowrap font-[500] opacity-30 overflow-hidden">
+          <div
+            style={{ animationPlayState: "running" }}
+            className="font-serif animate-text-scroll inline-block text-[25rem] h-[.25em] tracking-[-0.05em]"
           >
-            {children}
-          </main>
-          <div className="text-[0px] text-nowrap font-[500] opacity-30 overflow-hidden">
-            <div
-              style={{ animationPlayState: "running" }}
-              className="font-serif animate-text-scroll inline-block text-[25rem] h-[.25em] tracking-[-0.05em]"
-            >
-              Sake.
-            </div>
-            <div
-              style={{ animationPlayState: "running" }}
-              className="font-serif animate-text-scroll inline-block text-[25rem] h-[.25em] tracking-[-0.05em]"
-            >
-              Sake.
-            </div>
+            Sake.
           </div>
-          <GlobalFooter lang={lang} />
-          <div className="fixed inset-0 top-0 left-0 w-full h-full z-[-1] opacity-30">
-            <Brightness />
+          <div
+            style={{ animationPlayState: "running" }}
+            className="font-serif animate-text-scroll inline-block text-[25rem] h-[.25em] tracking-[-0.05em]"
+          >
+            Sake.
           </div>
-          <FirstCheckDialog lang={lang} />
-        </CSRFProvider>
+        </div>
+        <GlobalFooter lang={lang} />
+        <div className="fixed inset-0 top-0 left-0 w-full h-full z-[-1] opacity-30">
+          <Brightness />
+        </div>
+        <FirstCheckDialog lang={lang} />
         <Analytics />
       </body>
     </html>
