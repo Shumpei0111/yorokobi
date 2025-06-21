@@ -1,48 +1,43 @@
 "use server";
 
-import { Language } from "@/app/i18n/settings";
-import { validateCSRFToken } from "@/lib/csrf";
 import { FeedbackFormSchema } from "../schema";
-import { cookies } from "next/headers";
+import { supabaseClient } from "@/lib/supabaseClient";
+import { Database } from "@/types/database";
+import { fetchUserCountry } from "@/lib/utils";
+
+interface SubmitFeedbackReturn {
+  success: boolean;
+  error?: string;
+}
 
 export async function submitFeedback(
-  lang: Language,
-  data: FeedbackFormSchema,
-  csrfToken: string
-) {
-  if (!(await validateCSRFToken(csrfToken))) {
-    throw new Error("[submitFeedback] Invalid CSRF token");
-  }
-
+  data: FeedbackFormSchema
+): Promise<SubmitFeedbackReturn> {
   try {
-    // 結果に一意のIDを割り当て
-    const resultId =
-      Date.now().toString(36) + Math.random().toString(36).substring(2);
-    // 結果をクッキーに保存
-    cookies().set("feedbackResult", JSON.stringify({ id: resultId, ...data }), {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60, // 1時間の有効期限
-    });
+    const country = await fetchUserCountry();
+    const user_id = data.user_id;
 
-    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-    const host = process.env.VERCEL_URL || "localhost:3200";
-    const apiUrl = `${protocol}://${host}/api/feedback`;
+    const { error } = await supabaseClient.from("feedback").insert([
+      {
+        ...data,
+        user_id,
+        created_at: new Date().toISOString(),
+        location: country,
+      } satisfies Database["public"]["Tables"]["feedback"]["Insert"],
+    ]);
 
-    const response = await fetch(apiUrl, {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      console.log("フィードバックを送信しました");
-      return { success: true };
-    } else {
-      console.error("🍏API responded with an error:", response.status);
-      return { success: false, error: `API error: ${response.status}` };
+    if (error) {
+      console.error("[submitFeedback]Supabase insert error:", error);
+      return { success: false, error: error.message };
     }
+
+    console.log("フィードバックを送信しました");
+    return { success: true };
   } catch (error) {
     console.error("🍎フィードバックの送信に失敗しました", error);
+    if (error instanceof Error) {
+      return { success: false, error: error.message };
+    }
     return { success: false, error: "Internal server error" };
   }
 }

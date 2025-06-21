@@ -4,13 +4,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { TFunction } from "i18next";
 import { Language } from "@/app/i18n/settings";
-import { GET_USER_ID_KEY, getUserId } from "@/lib/getUserId";
+import { getUserId } from "@/lib/getUserId";
+import { submitFeedback } from "./actions/actions";
 
 export const useLogic = ({
   diagnosisResult,
   t,
   lang,
-  csrfToken,
   setIsOpen,
 }: {
   diagnosisResult:
@@ -21,7 +21,6 @@ export const useLogic = ({
     | undefined;
   t: TFunction;
   lang: Language;
-  csrfToken: string | null;
   setIsOpen: (isOpen: boolean) => void;
 }) => {
   const [isAgreePrivacyPolicy, setIsAgreePrivacyPolicy] = useState(false);
@@ -105,43 +104,27 @@ export const useLogic = ({
 
   const onSubmit = async (data: FeedbackFormSchema) => {
     try {
-      if (!csrfToken) {
-        alert("送信に失敗しました");
-        throw new Error("Invalid CSRF token");
+      const result = await submitFeedback(data);
+
+      if (!result.success) {
+        throw new Error(
+          result.error || "Failed to submit feedback for an unknown reason"
+        );
       }
 
-      const response = await fetch("/api/feedback", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...data,
-          user_id: crypto.randomUUID(), // Generate a new user ID for each submission
-          created_at: new Date().toISOString(),
-        }),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to submit feedback");
-      }
-      const result = await response.json();
-      // console.log("Feedback submitted successfully:", result);
       setIsSubmitSuccess(true);
-
-      const userId = result.data[0].user_id;
-      if (!localStorage.getItem(GET_USER_ID_KEY)) {
-        localStorage.setItem(GET_USER_ID_KEY, userId);
-      }
       setTimeout(() => {
         alert(
           "フィードバックを送信しました。貴重なご意見ありがとうございます！"
         );
-        // Optionally, you can reset the form or close the feedback modal here
         method.reset();
         setIsOpen(false);
       }, 500);
     } catch (error) {
       console.error("Error submitting feedback:", error);
+      alert(
+        "フィードバックの送信に失敗しました。しばらくしてから再度お試しください。"
+      );
       setIsSubmitSuccess(false);
     }
   };

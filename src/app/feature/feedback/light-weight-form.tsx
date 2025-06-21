@@ -19,7 +19,6 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Send } from "lucide-react";
 import { FormErrorMessage } from "@/components/ui/form-error-message";
-import { useCSRF } from "@/providers/CSRFProvider";
 import { FeedbackFormSchema } from "./schema";
 import { FieldErrors } from "react-hook-form";
 import Link from "next/link";
@@ -40,7 +39,6 @@ export const LightWeightForm = ({
   };
 }) => {
   const { t } = useTranslation(lang);
-  const { csrfToken } = useCSRF();
 
   const {
     method,
@@ -55,7 +53,6 @@ export const LightWeightForm = ({
     diagnosisResult,
     t,
     lang,
-    csrfToken,
     setIsOpen,
   });
 

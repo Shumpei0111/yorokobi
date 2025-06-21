@@ -58,8 +58,8 @@ export function middleware(request: NextRequest) {
   }
 
   const preferredLanguage = getNegotiatedLanguage(headers) || defaultLanguage;
-
   const pathname = request.nextUrl.pathname;
+
   const pathnameIsMissingLocale = availableLanguages.every(
     (lang) => !pathname.startsWith(`/${lang}/`) && pathname !== `/${lang}`
   );

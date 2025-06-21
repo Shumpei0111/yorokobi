@@ -10,6 +10,7 @@ export function generateCSRFToken(): string {
 
 export async function validateCSRFToken(token: string): Promise<boolean> {
   const storedToken = cookies().get("csrfToken")?.value;
+
   if (!storedToken || !token) return false;
 
   const [storedTokenValue, storedTimestamp] = storedToken.split(".");

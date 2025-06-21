@@ -27,11 +27,11 @@ test("スコアの計算", () => {
     weights,
   });
 
-  console.log("🍎", { result });
-
   expect(result).toEqual({
     daiginjo: 1.2,
-    junmai: 1.79,
+    junmaiGinjo: 0,
     tokubetsuJunmai: 4.8,
+    futsushu: 0,
+    junmai: 1.79,
   });
 });
