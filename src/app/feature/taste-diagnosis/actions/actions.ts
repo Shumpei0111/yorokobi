@@ -1,20 +1,15 @@
 "use server";
 
-import { validateCSRFToken } from "@/lib/csrf";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { Language } from "@/app/i18n/settings";
 import { TasteDiagnosisSchema } from "../schema";
+import { z } from "zod";
 
 export async function submitDiagnosis(
   lang: Language,
-  data: TasteDiagnosisSchema,
-  csrfToken: string
+  data: TasteDiagnosisSchema
 ) {
-  if (!(await validateCSRFToken(csrfToken))) {
-    throw new Error("[submitDiagnosis] Invalid CSRF token");
-  }
-
   // 結果に一意のIDを割り当て
   const resultId =
     Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -40,4 +35,22 @@ export async function getDiagnosisResult(): Promise<TasteDiagnosisSchema | null>
     console.error("Failed to parse diagnosis result:", error);
     return null;
   }
+}
+
+const postResultSchema = z.object({
+  result: z.object({}).passthrough(),
+  user_id: z.string(),
+});
+
+export async function postResult(data: { result: unknown; user_id: string }) {
+  const validation = postResultSchema.safeParse(data);
+
+  if (!validation.success) {
+    console.error("Invalid data format for postResult:", validation.error);
+    return { success: false, error: "Invalid data format" };
+  }
+
+  console.log("Received diagnosis result on server:", validation.data);
+  // ここでデータベースへの保存処理などを実装する
+  return { success: true };
 }

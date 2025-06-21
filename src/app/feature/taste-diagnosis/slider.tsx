@@ -12,7 +12,6 @@ import { useAnswers } from "./hooks/use-answers";
 import questions from "@/app/data/questions.json";
 import { Form } from "@/components/ui/form";
 import { TasteDiagnosisSchema } from "./schema";
-import { useCSRF } from "@/providers/CSRFProvider";
 import { submitDiagnosis } from "./actions/actions";
 import { Spinner } from "@/components/ui/spinner";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -27,12 +26,9 @@ export const QuestionSlider = ({ lang }: { lang: Language }) => {
     handleAnswer,
     handleBack,
   } = useAnswers(questions as unknown as Question[]);
-  const { csrfToken } = useCSRF();
 
   const onSubmit = async (data: TasteDiagnosisSchema) => {
-    if (csrfToken) {
-      await submitDiagnosis(lang, data, csrfToken);
-    }
+    await submitDiagnosis(lang, data);
   };
 
   const mainButtonVariant = tv({
