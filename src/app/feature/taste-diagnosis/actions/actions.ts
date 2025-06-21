@@ -42,7 +42,9 @@ const postResultSchema = z.object({
   user_id: z.string(),
 });
 
-export async function postResult(data: { result: unknown; user_id: string }) {
+export type PostResultData = z.infer<typeof postResultSchema>;
+
+export async function postResult(data: PostResultData) {
   const validation = postResultSchema.safeParse(data);
 
   if (!validation.success) {
