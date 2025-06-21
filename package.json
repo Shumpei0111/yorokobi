@@ -10,7 +10,7 @@
     "test": "vitest",
     "generate-static-sake-data": "node scripts/generateStaticSakeData.mjs",
     "generate-ranked-brands": "node scripts/generateRankedData.mjs",
-    "generate-db-types": "npx supabase gen types typescript --project-id 'ifulkyqfikypnaaamsue' --schema public > ./src/types/database.ts"
+    "generate-db-types": "npx supabase gen types typescript --project-id 'gnjcvmtoboaulanoyyom' --schema public > ./src/types/database.ts"
   },
   "dependencies": {
     "@funtech-inc/use-shader-fx": "^1.1.43",
