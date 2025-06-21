@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Negotiator from "negotiator";
 import { defaultLanguage, availableLanguages } from "@/app/i18n/settings";
 import { env } from "@/env.mjs";
+import { generateCSRFToken, getCookieOptions } from "@/lib/csrf";
 
 const getNegotiatedLanguage = (
   headers: Negotiator.Headers
@@ -64,6 +65,8 @@ export function middleware(request: NextRequest) {
     (lang) => !pathname.startsWith(`/${lang}/`) && pathname !== `/${lang}`
   );
 
+  let response: NextResponse;
+
   /**
    * MEMO: リダイレクトとリライトの処理
    * --------------------------------------------------------------------------
@@ -75,14 +78,22 @@ export function middleware(request: NextRequest) {
    */
   if (pathnameIsMissingLocale) {
     if (preferredLanguage !== defaultLanguage) {
-      return NextResponse.redirect(
+      response = NextResponse.redirect(
         new URL(`/${preferredLanguage}${pathname}`, request.url)
       );
     } else {
       const newPathname = `/${defaultLanguage}${pathname}`;
-      return NextResponse.rewrite(new URL(newPathname, request.url));
+      response = NextResponse.rewrite(new URL(newPathname, request.url));
     }
+  } else {
+    response = NextResponse.next();
   }
 
-  return NextResponse.next();
+  const csrfTokenFromCookie = request.cookies.get("csrfToken")?.value;
+  if (!csrfTokenFromCookie) {
+    const newCsrfToken = generateCSRFToken();
+    response.cookies.set("csrfToken", newCsrfToken, getCookieOptions());
+  }
+
+  return response;
 }
