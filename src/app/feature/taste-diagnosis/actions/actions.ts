@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { Language } from "@/app/i18n/settings";
 import { TasteDiagnosisSchema, DiagnosisResultWithId } from "../schema";
 import { z } from "zod";
+import { supabaseClient } from "@/lib/supabaseClient";
 
 export async function submitDiagnosis(
   lang: Language,
@@ -60,7 +61,12 @@ export async function getDiagnosisResult(): Promise<TasteDiagnosisSchema | null>
 }
 
 const postResultSchema = z.object({
-  result: z.object({}).passthrough(),
+  result: z.object({
+    daiginjo: z.number(),
+    junmaiGinjo: z.number(),
+    tokubetsuJunmai: z.number(),
+    futsushu: z.number(),
+  }),
   user_id: z.string(),
 });
 
@@ -74,7 +80,27 @@ export async function postResult(data: PostResultData) {
     return { success: false, error: "Invalid data format" };
   }
 
-  console.log("Received diagnosis result on server:", validation.data);
-  // ここでデータベースへの保存処理などを実装する
-  return { success: true };
+  const { result, user_id } = validation.data;
+
+  try {
+    const { error } = await supabaseClient.from("diagnosis_results").insert([
+      {
+        user_id,
+        result: JSON.stringify(result),
+      },
+    ]);
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      return { success: false, error: error.message };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to post result:", error);
+    if (error instanceof Error) {
+      return { success: false, error: error.message };
+    }
+    return { success: false, error: "Internal server error" };
+  }
 }
