@@ -35,7 +35,7 @@ export const metadata = {
     description: "Discover Your Perfect Sake.日本酒の喜びを、あなたに。",
     images: [
       {
-        url: "/images/ogp.png",
+        url: "/images/ogp2.png",
         type: "image/png",
         width: 1200,
         height: 630,
@@ -46,7 +46,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Yorokobi - Discover Your Perfect Sake.",
     description: "Discover Your Perfect Sake.日本酒の喜びを、あなたに。",
-    images: ["/images/ogp.png"],
+    images: ["/images/ogp2.png"],
   },
 };
 
