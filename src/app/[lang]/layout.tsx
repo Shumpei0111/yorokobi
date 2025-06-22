@@ -24,7 +24,14 @@ const hannariMincho = localFont({
   variable: "--font-hannari-mincho",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+  : !!process.env.VERCEL_URL
+  ? new URL(`https://${process.env.VERCEL_URL}`)
+  : new URL(`http://localhost:${process.env.PORT || 3000}`);
+
 export const metadata = {
+  metadataBase: siteUrl,
   title: "Yorokobi - Discover Your Perfect Sake.",
   description: "Discover Your Perfect Sake.日本酒の喜びを、あなたに。",
   images: {
