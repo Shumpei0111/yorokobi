@@ -27,23 +27,23 @@ const hannariMincho = localFont({
 export const metadata = {
   title: "Yorokobi - Discover Your Perfect Sake.",
   description: "Discover Your Perfect Sake.日本酒の喜びを、あなたに。",
-  images: {
-    url: "/images/ogp.png",
-    type: "image/png",
-    width: 1200,
-    height: 630,
+  openGraph: {
+    title: "Yorokobi - Discover Your Perfect Sake.",
+    description: "Discover Your Perfect Sake.日本酒の喜びを、あなたに。",
+    images: [
+      {
+        url: "/images/ogp.png",
+        type: "image/png",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   twitter: {
-    type: "website",
     card: "summary_large_image",
     title: "Yorokobi - Discover Your Perfect Sake.",
     description: "Discover Your Perfect Sake.日本酒の喜びを、あなたに。",
-    images: {
-      url: "/images/ogp.png",
-      type: "image/png",
-      width: 1200,
-      height: 630,
-    },
+    images: ["/images/ogp.png"],
   },
 };
 
