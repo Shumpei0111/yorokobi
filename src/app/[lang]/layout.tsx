@@ -24,11 +24,7 @@ const hannariMincho = localFont({
   variable: "--font-hannari-mincho",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-  ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
-  : !!process.env.VERCEL_URL
-  ? new URL(`https://${process.env.VERCEL_URL}`)
-  : new URL(`http://localhost:${process.env.PORT || 3000}`);
+const siteUrl = new URL("https://yorokobi.mb-js.site/");
 
 export const metadata = {
   metadataBase: siteUrl,
