@@ -17,7 +17,7 @@ export const generateShareUrl = (scoreType: Category, t: TFunction) => {
   const encodedShareText = encodeURIComponent(textWithNewLine);
 
   const hashtags = t("taste-diagnosis:hashtags", {
-    scoreType: translatedScoreType,
+    scoreType: translatedScoreType.label,
   });
 
   return {
