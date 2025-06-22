@@ -25,6 +25,7 @@ export default async function ResultPage({
 }) {
   const { lang } = params;
   const { t } = await getTranslation(lang);
+
   const result = await getDiagnosisResult();
 
   if (!result) {

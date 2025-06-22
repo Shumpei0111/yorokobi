@@ -28,7 +28,11 @@ export const QuestionSlider = ({ lang }: { lang: Language }) => {
   } = useAnswers(questions as unknown as Question[]);
 
   const onSubmit = async (data: TasteDiagnosisSchema) => {
-    await submitDiagnosis(lang, data);
+    try {
+      await submitDiagnosis(lang, data);
+    } catch (error) {
+      console.error("Failed to submit diagnosis:", error);
+    }
   };
 
   const mainButtonVariant = tv({

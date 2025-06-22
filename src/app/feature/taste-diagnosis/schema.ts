@@ -8,3 +8,8 @@ export const tasteDiagnosisSchema = z.object({
 });
 
 export type TasteDiagnosisSchema = z.infer<typeof tasteDiagnosisSchema>;
+
+// クッキーに保存される診断結果の型（idを含む）
+export type DiagnosisResultWithId = TasteDiagnosisSchema & {
+  id: string;
+};
